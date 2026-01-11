@@ -36,6 +36,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'chat',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -110,3 +115,8 @@ STATIC_URL = 'uploads/'
 STATICFILES_DIRS = [
     BASE_DIR / 'uploads'
 ]
+
+if os.getenv("PROD") == True:
+    from .settings_prod import *
+else:
+    from .settings_local import *
