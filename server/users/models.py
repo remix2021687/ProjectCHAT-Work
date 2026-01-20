@@ -14,6 +14,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    is_verified = models.BooleanField(default=False)
     bio = models.TextField(max_length=5000, blank=True)
     date_joined = models.DateTimeField(default=timezone.now)
 
@@ -23,7 +24,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
 
     def __str__(self):
-        return f"{self.email} | {self.email}"
+        return f"{self.username} | {self.email}"
 
     def has_perms(self, perm_list, obj=None):
         return self.is_admin

@@ -1,9 +1,8 @@
 import uuid
 from django.db import models
 from users.models import CustomUser
-# from django.contrib.auth.models import User
 
-#Main Chat Model
+#Chat Model
 class ChatMessage(models.Model):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
@@ -12,7 +11,7 @@ class ChatMessage(models.Model):
     def __str__(self):
         return f"Chat ID: {self.id}"
 
-#Message on chat
+#Message model
 class Message(models.Model):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     chat_message = models.ForeignKey(ChatMessage, related_name='messages', on_delete=models.CASCADE)
