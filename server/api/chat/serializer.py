@@ -14,4 +14,18 @@ class MessageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Message
-        fields = ("id", "sender", "timestamp")
+        fields = ("id", 'message', "sender", "timestamp")
+
+
+class ChatRoomListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ChatRoom
+        fields = ('id', 'sender', 'created_at')
+
+
+class ChatRoomSerializer(serializers.ModelSerializer):
+    messages = MessageSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = ChatRoom
+        fields = ('id', 'sender', 'messages', 'created_at')
