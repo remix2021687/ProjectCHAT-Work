@@ -1,4 +1,4 @@
-import { LeftNavMenu } from "./components/LeftNavMenu/LeftNavMenu"
+import { TopNavMenu } from "./components/TopNavMenu/LeftNavMenu"
 
 interface RootLayoutProps {
     children: React.ReactNode
@@ -7,7 +7,7 @@ interface RootLayoutProps {
 export const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
     return (
         <>
-            <LeftNavMenu />
+            <TopNavMenu />
             <main>
                 {children}
             </main>

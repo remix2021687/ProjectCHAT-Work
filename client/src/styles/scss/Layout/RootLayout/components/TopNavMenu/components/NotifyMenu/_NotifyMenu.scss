@@ -1,0 +1,36 @@
+.NotifyMenu {
+    position: absolute;
+    top: 0;
+    left: 70%;
+    width: 30%;
+    height: 100vh;
+    background-color: #E1E1E9;
+    padding: 40px;
+
+    .NotifyMenu_header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 50%;
+        
+        h1 {
+            font-size: 27px;
+        }
+
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+    .NotifyMenu_conetent {
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+        gap: 35px;
+    }
+}
+
+@import './components/NotifyMenuMessage/NotifyMenuMessage';
