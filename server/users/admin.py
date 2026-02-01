@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import CustomUser
+from .models import CustomUser, UserNotify
 
-admin.site.register(CustomUser)
+admin.site.register([CustomUser, UserNotify])
 
 class UserAdmin(admin.ModelAdmin):
     fields = ('email', 'first_name', 'last_name')

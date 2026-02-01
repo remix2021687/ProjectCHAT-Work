@@ -8,9 +8,14 @@ from .managers import CustomUserManager
 from django.utils.translation import gettext_lazy as _
 
 class UserNotify(models.Model):
+    class TypeNotify(models.TextChoices):
+        USERNOTIFY = 'USERNOTIFY', _('UserNotify')
+        INCHATROOMNOTIFY = 'INCHROOMNOTIFY', _('InChatroomNotify')
+
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.OneToOneField("CustomUser", on_delete=models.CASCADE)
-    type = models.CharField(blank=True, null=True)
+    type = models.CharField(blank=True, null=True, choices=TypeNotify, default=TypeNotify.USERNOTIFY)
     message = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
