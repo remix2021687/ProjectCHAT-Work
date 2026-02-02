@@ -16,7 +16,7 @@ export const NotifyMenuMessage: React.FC<NotifyMenuMessageProps> = ({avatar, use
                     <strong>
                         {username ? username : "@test-user"}
                     </strong>
-                    {text ? text : ` Это тестовое уведомление для проверки компонента уведомлений.`}
+                    {text ? " " + text : ` Это тестовое уведомление для проверки компонента уведомлений.`}
                 </p>
             </div>
         </section>

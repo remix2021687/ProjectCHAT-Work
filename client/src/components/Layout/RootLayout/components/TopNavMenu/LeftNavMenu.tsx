@@ -7,7 +7,7 @@ import phone from "@assets/svg/phone.svg";
 import video from "@assets/svg/video.svg";
 import notify from "@assets/svg/notification.svg";
 import { NotifyMenu } from "./components/NotifyMenu/NotifyMenu"
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import { Open } from "@store/Slices/NotifyMenuSlice";
 
 export const TopNavMenu: React.FC = () => {
