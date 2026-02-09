@@ -7,13 +7,21 @@ class Post(models.Model):
     title = models.CharField(max_length=255, blank=False, null=False)
     content = models.TextField(blank=False, null=False, max_length=3000)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="posts")
-    likes = models.ManyToManyField(CustomUser, related_name="liked_posts")
+    likes = models.ManyToManyField(CustomUser, related_name="liked_posts", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    @property
+    def likes_count(self):
+        return self.likes.count()
+
+    def is_liked_by(self, user):
+        if not user.is_authenticated:
+            return False
+        return self.likes.filter(id=user.id).exists()
+
     def __str__(self):
         return f'{self.title} | {self.user.username}'
-
 
 class Comment(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
