@@ -13,6 +13,13 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
+        fields = ('id', 'text', 'user', 'created_at', 'updated_at')
+
+class CommentCreateSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+
+    class Meta:
+        model = Comment
         fields = ('id', 'text', 'user')
 
 class PostListSerializer(serializers.ModelSerializer):
@@ -25,7 +32,7 @@ class PostListSerializer(serializers.ModelSerializer):
 
     def get_is_liked(self, obj):
         user = self.context['request'].user
-        return obj.is_liked_by(user)
+        return obj.is_liked_by_post(user)
 
 class PostSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
@@ -39,4 +46,4 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_is_liked(self, obj):
         user = self.context['request'].user
-        return obj.is_liked_by(user)
+        return obj.is_liked_by_post(user)

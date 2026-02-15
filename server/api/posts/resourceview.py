@@ -1,9 +1,9 @@
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from rest_framework import status
-from .serializer import PostSerializer, PostListSerializer
+from .serializer import PostSerializer, PostListSerializer, CommentCreateSerializer
 from posts.models import Post
 
 class PostViewSet(ModelViewSet):
@@ -30,6 +30,29 @@ class PostViewSet(ModelViewSet):
 
         return Response({
             "is_liked": is_liked,
-            "likes_count": post.likes_count
+            "likes_count": post.post_likes_count
         }, status=status.HTTP_200_OK)
+
+
+    @action(detail=True, methods=["post"])
+    def comment(self, request, pk=None):
+        post = self.get_object()
+        serializer = CommentCreateSerializer(
+            data=request.data,
+            context={'request': request}
+        )
+
+        if serializer.is_valid():
+            serializer.save(
+                user=request.user,
+                post=post
+            )
+
+            return Response(
+                serializer.data,
+                status=status.HTTP_201_CREATED
+            )
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
