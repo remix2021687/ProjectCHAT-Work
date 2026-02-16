@@ -3,8 +3,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from rest_framework import status
-from .serializer import PostSerializer, PostListSerializer, CommentCreateSerializer
-from posts.models import Post
+from .serializer import PostSerializer, PostListSerializer, CommentCreateSerializer, CommentSerializer
+from posts.models import Post, Comment
 
 class PostViewSet(ModelViewSet):
     queryset = Post.objects.all()
@@ -30,7 +30,7 @@ class PostViewSet(ModelViewSet):
 
         return Response({
             "is_liked": is_liked,
-            "likes_count": post.post_likes_count
+            "post_likes_count": post.post_likes_count
         }, status=status.HTTP_200_OK)
 
 
@@ -56,3 +56,26 @@ class PostViewSet(ModelViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class CommentViewSet(ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = [IsAuthenticated]
+
+
+    @action(detail=True, methods=['post'])
+    def like(self, request, pk=None):
+        comment = self.get_object()
+        user = request.user
+
+        if comment.likes.filter(id=user.id).exists():
+            comment.likes.remove(user)
+            is_liked = False
+
+        else:
+            comment.likes.add(user)
+            is_liked = True
+
+        return Response({
+            "is_liked": is_liked,
+            "likes_count_comment": comment.likes_count_comment
+        })

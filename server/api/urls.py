@@ -4,11 +4,12 @@ from django.contrib import admin
 from rest_framework import routers
 
 from api.chat.resurceview import ChatRoomViewSet
-from api.posts.resourceview import PostViewSet
+from api.posts.resourceview import PostViewSet, CommentViewSet
 
 router = routers.DefaultRouter()
 router.register('chatrooms', ChatRoomViewSet)
 router.register("posts", PostViewSet)
+router.register('comments', CommentViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

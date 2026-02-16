@@ -6,14 +6,20 @@ from posts.models import Post, Comment
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ('id', 'last_name', 'first_name', 'avatar',)
+        fields = ('id', 'last_name', 'first_name', 'avatar')
 
 class CommentSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
+    is_liked = serializers.SerializerMethodField()
+    likes_count_comment = serializers.ReadOnlyField()
 
     class Meta:
         model = Comment
-        fields = ('id', 'text', 'user', 'created_at', 'updated_at')
+        fields = ('id', 'is_liked', 'likes_count_comment', 'text', 'post', 'user', 'created_at', 'updated_at')
+
+    def get_is_liked(self, obj):
+        user = self.context['request'].user
+        return obj.is_liked_by_comment(user)
 
 class CommentCreateSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
@@ -23,12 +29,12 @@ class CommentCreateSerializer(serializers.ModelSerializer):
         fields = ('id', 'text', 'user')
 
 class PostListSerializer(serializers.ModelSerializer):
-    likes_count = serializers.ReadOnlyField()
+    post_likes_count = serializers.ReadOnlyField()
     is_liked = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
-        fields = ('id', 'title', 'likes_count', "is_liked", 'created_at')
+        fields = ('id', 'title', 'post_likes_count', 'is_liked', 'created_at')
 
     def get_is_liked(self, obj):
         user = self.context['request'].user
@@ -37,12 +43,12 @@ class PostListSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
     comments = CommentSerializer(read_only=True, many=True)
-    likes_count = serializers.ReadOnlyField()
+    post_likes_count = serializers.ReadOnlyField()
     is_liked = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
-        fields = ('id', 'title', 'likes_count', 'is_liked', 'content', 'comments', 'user', 'created_at')
+        fields = ('id', 'title', 'post_likes_count', 'is_liked', 'content', 'comments', 'user', 'created_at')
 
     def get_is_liked(self, obj):
         user = self.context['request'].user

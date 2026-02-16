@@ -36,7 +36,7 @@ class Comment(models.Model):
     def likes_count_comment(self):
         return self.likes.count()
 
-    def is_liked_by_post(self, user):
+    def is_liked_by_comment(self, user):
         if not user.is_authenticated:
             return False
         return self.likes.filter(id=user.id).exists()
