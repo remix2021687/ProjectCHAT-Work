@@ -3,10 +3,9 @@ import uuid
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils import timezone
-
-from .managers import CustomUserManager
 from django.utils.translation import gettext_lazy as _
 
+from .managers import CustomUserManager
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
@@ -36,3 +35,15 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def has_module_perms(self, app_label):
         return True
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    avatar = models.ImageField(_("avatar"), null=True, blank=True, upload_to="uploads/avatars/")
+    banner = models.ImageField(_("banner"), null=True, blank=True, upload_to="uploads/banners/")
+    bio = models.TextField(max_length=5000, blank=True)
+    followers_count = models.IntegerField(default=0)
+    following_count = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f'Profile by {self.user.username}'
