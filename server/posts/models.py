@@ -1,12 +1,13 @@
 import uuid
 from django.db import models
+from users.models import CustomUser
 
 class Post(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=255, blank=False, null=False)
     content = models.TextField(blank=False, null=False, max_length=3000)
-    user = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE, related_name="posts")
-    likes = models.ManyToManyField('users.CustomUser', related_name="liked_posts", blank=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="posts")
+    likes = models.ManyToManyField(CustomUser, related_name="liked_posts", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -25,8 +26,8 @@ class Post(models.Model):
 class Comment(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
-    user = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE, related_name="comments")
-    likes = models.ManyToManyField('users.CustomUser', related_name="liked_comments", blank=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="comments")
+    likes = models.ManyToManyField(CustomUser, related_name="liked_comments", blank=True)
     text = models.TextField(blank=False, null=False, max_length=3000)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

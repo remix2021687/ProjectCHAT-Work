@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'chat',
     'posts',
-    'users.apps.UsersConfig',
+    'users'
 ]
 
 AUTH_USER_MODEL = "users.CustomUser"

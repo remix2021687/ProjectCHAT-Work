@@ -1,10 +1,11 @@
 import uuid
 from django.db import models
+from users.models import CustomUser
 
 #Chat Model
 class ChatRoom(models.Model):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
-    sender = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE)
+    sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
