@@ -6,7 +6,7 @@ from posts.models import Post, Comment
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ('id', 'last_name', 'first_name', 'avatar')
+        fields = ('id', 'last_name', 'first_name')
 
 class CommentSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)

@@ -5,11 +5,13 @@ from rest_framework import routers
 
 from api.chat.resurceview import ChatRoomViewSet
 from api.posts.resourceview import PostViewSet, CommentViewSet
+from api.users.resourceview import UsersViewSet
 
 router = routers.DefaultRouter()
 router.register('chatrooms', ChatRoomViewSet)
 router.register("posts", PostViewSet)
 router.register('comments', CommentViewSet)
+router.register('me', UsersViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
