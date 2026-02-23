@@ -124,7 +124,9 @@ SOCIALACCOUNT_PROVIDERS = {
             'client_id': os.getenv('GOOGLE_CLIENT_ID'),
             'secret': os.getenv('GOOGLE_CLIENT_SECRET'),
             'key': "",
-        }
+        },
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {'access_type': 'online'},
     }
 }
 
@@ -150,9 +152,7 @@ SITE_ID = 1
 
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
-ACCOUNT_EMAIL_REQUIRED = True
-
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/

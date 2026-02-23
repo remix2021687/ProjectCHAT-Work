@@ -36,10 +36,16 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         return True
 
 
+class Connect(models.Model):
+    id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
+    name = models.CharField(_("Name"), max_length=50)
+    url = models.URLField(_("URL"))
+
 class Profile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     avatar = models.ImageField(_("avatar"), null=True, blank=True, upload_to="uploads/avatars/")
     banner = models.ImageField(_("banner"), null=True, blank=True, upload_to="uploads/banners/")
+    connect = models.ManyToManyField(Connect, blank=True)
     bio = models.TextField(max_length=5000, blank=True)
     followers_count = models.IntegerField(default=0)
     following_count = models.IntegerField(default=0)

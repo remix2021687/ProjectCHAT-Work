@@ -4,8 +4,7 @@ from users.models import CustomUser, Profile
 from .serializer import ProfileSerializer
 from users.permissions import IsOwner
 
-class UsersViewSet(viewsets.ModelViewSet):
-    queryset = CustomUser.objects.all()
+class ProfileViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileSerializer
     permission_classes = [IsAuthenticated, IsOwner]
 
