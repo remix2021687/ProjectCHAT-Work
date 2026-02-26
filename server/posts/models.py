@@ -5,7 +5,7 @@ class Post(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=255, blank=False, null=False)
     content = models.TextField(blank=False, null=False, max_length=3000)
-    user = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE, related_name="posts")
+    user = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE, related_name="post")
     likes = models.ManyToManyField('users.CustomUser', related_name="liked_posts", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

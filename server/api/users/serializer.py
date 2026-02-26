@@ -15,7 +15,7 @@ class ProfileOwnPostSerializer(serializers.ModelSerializer):
 
 class ProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
-    posts = ProfileOwnPostSerializer(read_only=True, many=True)
+    posts = ProfileOwnPostSerializer(read_only=True, many=True, source='user.post')
 
     class Meta:
         model = Profile
