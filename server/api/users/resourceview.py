@@ -22,6 +22,22 @@ class ProfileViewSet(viewsets.ModelViewSet):
             request.user.profile.connects.add(connect)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    @action(detail=True, methods=['put'])
+    def update_connect(self, request, pk=None):
+        try:
+            connect = Profile.objects.get(pk=pk)
+            serializer = ProfileConnectSerializer(connect, data=request.data)
+
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        except Connect.DoesNotExist:
+            return Response({
+                "error": "Link does not exist"
+            }, status=status.HTTP_404_NOT_FOUND)
 
     @action(detail=True, methods=['delete'])
     def remove_connect(self, request, pk=None):
