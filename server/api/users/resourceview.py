@@ -23,7 +23,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    @action(detail=True, methods=['put'])
+    @action(detail=False, methods=['patch'], url_path='connect/(?P<pk>[0-9a-fA-F-]+)/update')
     def update_connect(self, request, pk=None):
         try:
             connect = Profile.objects.get(pk=pk)
@@ -39,7 +39,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
                 "error": "Link does not exist"
             }, status=status.HTTP_404_NOT_FOUND)
 
-    @action(detail=True, methods=['delete'])
+    @action(detail=False, methods=['delete'], url_path='connect/(?P<pk>[^/]+)/delete')
     def remove_connect(self, request, pk=None):
         try:
             connect = Profile.objects.get(pk=pk)
