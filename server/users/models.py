@@ -51,6 +51,7 @@ class VerificationRequest(models.Model):
     last_name = models.CharField(_("Last Name"), max_length=50, blank=False)
     birth_date = models.DateField(_("Birth Date"), null=True, blank=False)
     content = models.TextField(max_length=5000, blank=False)
+
     is_approved = models.BooleanField(_("Is Approved"), default=False)
     created_at = models.DateTimeField(default=timezone.now, editable=False)
 

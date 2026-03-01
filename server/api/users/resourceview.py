@@ -1,9 +1,12 @@
-from rest_framework.decorators import action
-from rest_framework.response import Response
 from rest_framework import viewsets, status
+from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.response import Response
+
 from users.models import Profile, Connect, VerificationRequest
-from .serializer import ProfileSerializer, ProfileConnectSerializer, VerificationRequestSerializer
+from .serializer import ProfileSerializer, ProfileConnectSerializer, VerificationRequestSerializer, \
+    VerificationResponseSerializer
+
 
 class ProfileViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileSerializer
@@ -21,7 +24,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
             request.user.profile.connects.add(connect)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
     @action(detail=False, methods=['patch'], url_path='connect/(?P<pk>[0-9a-fA-F-]+)/update')
     def update_connect(self, request, pk=None):
         try:
@@ -37,9 +40,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         except Connect.DoesNotExist:
-            return Response({
-                "error": "Link does not exist"
-            }, status=status.HTTP_404_NOT_FOUND)
+            return Response({"error": "Link does not exist"}, status=status.HTTP_404_NOT_FOUND)
 
     @action(detail=False, methods=['delete'], url_path='connect/(?P<pk>[0-9a-fA-F-]+)/delete')
     def remove_connect(self, request, pk=None):
@@ -52,9 +53,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         except Connect.DoesNotExist:
-            return Response({
-                "error": "Link does not exist"
-            }, status=status.HTTP_404_NOT_FOUND)
+            return Response({"error": "Link does not exist"}, status=status.HTTP_404_NOT_FOUND)
 
     @action(detail=False, methods=['post'], url_path='verify')
     def verify_profile(self, request):
@@ -69,6 +68,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
                 return Response("Request is Watching ! Check request later", status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class VerificationRequestViewSet(viewsets.ModelViewSet):
     serializer_class = VerificationRequestSerializer
@@ -85,5 +85,7 @@ class VerificationRequestViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=['post'], url_path='approve')
     def approve(self, request, pk=None):
-        pass
-
+        serializer = VerificationResponseSerializer(data=request.data)
+        if serializer.is_valid():
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
