@@ -5,7 +5,7 @@ from rest_framework.response import Response
 
 from users.models import Profile, Connect, VerificationRequest
 from .serializer import ProfileSerializer, ProfileConnectSerializer, VerificationRequestSerializer, \
-    VerificationResponseSerializer
+    VerificationResponseSerializer, VerificationRequestCreateSerializer
 
 
 class ProfileViewSet(viewsets.ModelViewSet):
@@ -57,7 +57,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['post'], url_path='verify')
     def verify_profile(self, request):
-        serializer = VerificationRequestSerializer(data=request.data)
+        serializer = VerificationRequestCreateSerializer(data=request.data)
         verify_request = VerificationRequest.objects.filter(user=request.user)
 
         if serializer.is_valid():
@@ -71,11 +71,11 @@ class ProfileViewSet(viewsets.ModelViewSet):
 
 
 class VerificationRequestViewSet(viewsets.ModelViewSet):
-    serializer_class = VerificationRequestSerializer
+    serializer_class = VerificationRequestCreateSerializer
     permission_classes = [IsAuthenticated, IsAdminUser]
 
     def get_queryset(self):
-        return VerificationRequest.objects.filter(is_approved=False)
+        return VerificationRequest.objects.filter(status="PENDING")
 
     def create(self, request, *args, **kwargs):
         return Response("405", status=status.HTTP_405_METHOD_NOT_ALLOWED)
@@ -83,9 +83,11 @@ class VerificationRequestViewSet(viewsets.ModelViewSet):
     def destroy(self, request, *args, **kwargs):
         return Response("405", status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-    @action(detail=True, methods=['post'], url_path='approve')
+    @action(detail=True, methods=['put'], url_path='approve')
     def approve(self, request, pk=None):
-        serializer = VerificationResponseSerializer(data=request.data)
+        verification_request = VerificationRequest.objects.get(pk=pk)
+        serializer = VerificationResponseSerializer(verification_request, data=request.data, partial=True)
         if serializer.is_valid():
+            serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

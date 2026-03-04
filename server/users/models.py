@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 from users.managers import CustomUserManager
 
+
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     username = models.CharField(_("username"), max_length=50, unique=True, blank=False, null=False)
@@ -15,7 +16,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(_('last name'), max_length=50)
     is_admin = models.BooleanField(_("Admin MOD"), default=False)
     is_staff = models.BooleanField(_("Staff MOD"), default=False)
-    is_moderator = models.BooleanField(_("Moderator MOD"),default=False)
+    is_moderator = models.BooleanField(_("Moderator MOD"), default=False)
     is_active = models.BooleanField(default=True)
     is_verified = models.BooleanField(default=False)
     bio = models.TextField(max_length=5000, blank=True)
@@ -44,19 +45,27 @@ class Connect(models.Model):
     def __str__(self):
         return f' Name: {self.name} | URL: {self.url}'
 
+
 class VerificationRequest(models.Model):
+    class VerificationRequestStatus(models.TextChoices):
+        PENDING = "PENDING", _("PENDING")
+        APPROVED = "APPROVED", _("APPROVED")
+        REJECTED = "REJECTED", _("REJECTED")
+
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, default='')
     first_name = models.CharField(_("First Name"), max_length=50, blank=False)
     last_name = models.CharField(_("Last Name"), max_length=50, blank=False)
     birth_date = models.DateField(_("Birth Date"), null=True, blank=False)
     content = models.TextField(max_length=5000, blank=False)
-
-    is_approved = models.BooleanField(_("Is Approved"), default=False)
+    note_admin = models.TextField(max_length=5000, blank=True)
+    status = models.CharField(_("Status"), max_length=50, choices=VerificationRequestStatus,
+                              default=VerificationRequestStatus.PENDING)
     created_at = models.DateTimeField(default=timezone.now, editable=False)
 
     def __str__(self):
         return f'Request by {self.first_name} {self.last_name} | created at {self.created_at}'
+
 
 class Profile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)

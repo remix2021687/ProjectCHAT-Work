@@ -25,7 +25,7 @@ class ProfileOwnPostSerializer(serializers.ModelSerializer):
 class VerificationRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = VerificationRequest
-        fields = ('id', 'first_name', 'last_name', 'content', 'birth_date', 'is_approved')
+        fields = ('id', 'user', 'first_name', 'last_name', 'content', 'birth_date', 'status', 'note_admin')
         extra_kwargs = {
             'first_name': {'read_only': True},
             'last_name': {'read_only': True},
@@ -34,13 +34,27 @@ class VerificationRequestSerializer(serializers.ModelSerializer):
         }
 
 
-class VerificationResponseSerializer(serializers.ModelSerializer):
-    message = serializers.CharField(max_length=200, allow_blank=False)
-    approved = serializers.BooleanField(default=False, allow_null=False)
-
+class VerificationRequestCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = VerificationRequest
-        fields = ('message', 'approved')
+        fields = ('id', 'user', 'first_name', 'last_name', 'content', 'birth_date')
+        extra_kwargs = {
+            'birth_date': {'required': True},
+        }
+
+
+class VerificationResponseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = VerificationRequest
+        fields = ('status', 'note_admin')
+
+    def save(self, **kwargs):
+        instance = super().save(**kwargs)
+
+        if instance.status == "APPROVED":
+            user = instance.user
+            user.is_verified = True
+            user.save(update_fields=['is_verified'])
 
 
 class ProfileSerializer(serializers.ModelSerializer):
