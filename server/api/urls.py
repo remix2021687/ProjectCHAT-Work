@@ -5,13 +5,14 @@ from rest_framework import routers
 
 from api.chat.resurceview import ChatRoomViewSet
 from api.posts.resourceview import PostViewSet, CommentViewSet
-from api.users.resourceview import ProfileViewSet, VerificationRequestViewSet
+from api.users.resourceview import ProfileViewSet, VerificationRequestViewSet, UserViewSet
 
 router = routers.DefaultRouter()
 router.register('chatrooms', ChatRoomViewSet, basename='chatrooms')
 router.register("posts", PostViewSet, basename='posts')
 router.register('comments', CommentViewSet, basename='comment')
 router.register('me', ProfileViewSet, basename='profile')
+router.register('users', UserViewSet, basename='auth')
 router.register('verify', VerificationRequestViewSet, basename='verify')
 
 urlpatterns = [
