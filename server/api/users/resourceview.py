@@ -133,6 +133,20 @@ class UserViewSet(viewsets.ModelViewSet):
         else:
             return Response(serializer.errors, status=status.HTTP_401_UNAUTHORIZED)
 
+    @action(detail=False, methods=['post'], url_path='verify-email', permission_classes=[AllowAny])
+    def verify_email(self, request):
+        email = request.data['email']
+        verification_code = request.data['email_verification_code']
+        try:
+            user = CustomUser.objects.get(email=email)
+            if user.email_verification_code == verification_code:
+                user.is_email_verified = True
+                user.email_verification_code = None
+                user.save()
+                return Response({'message': "Email is verification"}, status=status.HTTP_200_OK)
+        except CustomUser.DoesNotExist:
+            return Response({"error": "User not found"}, status=status.HTTP_400_BAD_REQUEST)
+
     @action(detail=True, methods=['post'], url_path='punishment')
     def punishment(self, request, pk=None):
         suspect = CustomUser.objects.get(pk=pk)
