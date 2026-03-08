@@ -3,9 +3,9 @@ import uuid
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils import timezone
-
-from .managers import CustomUserManager
 from django.utils.translation import gettext_lazy as _
+
+from users.managers import CustomUserManager
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
@@ -14,9 +14,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True)
     first_name = models.CharField(_('first name'), max_length=50)
     last_name = models.CharField(_('last name'), max_length=50)
-    is_admin = models.BooleanField(default=False)
-    is_staff = models.BooleanField(default=False)
-    is_moderator = models.BooleanField(default=False)
+    is_admin = models.BooleanField(_("Admin MOD"), default=False)
+    is_staff = models.BooleanField(_("Staff MOD"), default=False)
+    is_moderator = models.BooleanField(_("Moderator MOD"), default=False)
+    email_verification_code = models.CharField(_("Email Verification Code"), max_length=6, blank=False, null=True,
+                                               default="")
+    is_email_verified = models.BooleanField(_("Email Verified"), default=False)
     is_active = models.BooleanField(default=True)
     is_verified = models.BooleanField(default=False)
     bio = models.TextField(max_length=5000, blank=True)
@@ -35,3 +38,80 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def has_module_perms(self, app_label):
         return True
+
+
+class UserPunishment(models.Model):
+    class PunishmentType(models.TextChoices):
+        BAN = "BAN", _("BAN")
+        MUTE = "MUTE", _("MUTE")
+
+    id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default='', related_name='suspect')
+    type = models.CharField(_("Type"), max_length=50, choices=PunishmentType, default="", blank=False)
+    time = models.DateTimeField(blank=True, null=True)
+    reason = models.TextField(max_length=1000, blank=True)
+    staff = models.ForeignKey(CustomUser, on_delete=models.SET_DEFAULT, default='', related_name="staff")
+    created_at = models.DateTimeField(default=timezone.now, editable=False)
+
+    def __str__(self):
+        return f'{self.type} for {self.user.username} by {self.staff.username} | created at {self.created_at}'
+
+
+class Connect(models.Model):
+    id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
+    name = models.CharField(_("Name"), max_length=50)
+    url = models.URLField(_("URL"))
+
+    def __str__(self):
+        return f' Name: {self.name} | URL: {self.url}'
+
+
+class VerificationRequest(models.Model):
+    class VerificationRequestStatus(models.TextChoices):
+        PENDING = "PENDING", _("PENDING")
+        APPROVED = "APPROVED", _("APPROVED")
+        REJECTED = "REJECTED", _("REJECTED")
+
+    id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, default='')
+    first_name = models.CharField(_("First Name"), max_length=50, blank=False)
+    last_name = models.CharField(_("Last Name"), max_length=50, blank=False)
+    birth_date = models.DateField(_("Birth Date"), null=True, blank=False)
+    content = models.TextField(max_length=5000, blank=False)
+    note_admin = models.TextField(max_length=5000, blank=True)
+    status = models.CharField(_("Status"), max_length=50, choices=VerificationRequestStatus,
+                              default=VerificationRequestStatus.PENDING)
+    created_at = models.DateTimeField(default=timezone.now, editable=False)
+
+    def __str__(self):
+        return f'Request by {self.first_name} {self.last_name} | created at {self.created_at}'
+
+
+class Notification(models.Model):
+    class TypesNotification(models.TextChoices):
+        Message = "Message", _("Chat Message Notification")
+        Warning = "Warning", _("Warning Notification")
+        System = "System", _("System Notification")
+
+    id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default='', related_name='notification')
+    type = models.CharField(_("Type"), max_length=50, choices=TypesNotification)
+    content = models.TextField(max_length=5000, blank=True)
+    created_at = models.DateTimeField(default=timezone.now, editable=False)
+
+    def __str__(self):
+        return f'Notification by {self.type} | created at {self.created_at.strftime("%B %d, %Y")}'
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    avatar = models.ImageField(_("avatar"), null=True, blank=True, upload_to="uploads/avatars/")
+    banner = models.ImageField(_("banner"), null=True, blank=True, upload_to="uploads/banners/")
+    bio = models.TextField(max_length=5000, blank=True)
+    connects = models.ManyToManyField(Connect, blank=True)
+    followers_count = models.IntegerField(default=0)
+    following_count = models.IntegerField(default=0)
+    total_views = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f'Profile by {self.user.username}'

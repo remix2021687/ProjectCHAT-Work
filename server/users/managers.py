@@ -1,3 +1,4 @@
+import random
 from django.contrib.auth.base_user import BaseUserManager
 
 
@@ -17,6 +18,7 @@ class CustomUserManager(BaseUserManager):
         )
 
         user.set_password(password)
+        user.email_verification_code = str(random.randint(100000, 999999))
         user.save(using=self._db)
 
         return user
