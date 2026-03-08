@@ -43,7 +43,7 @@ class UserPunishment(models.Model):
         MUTE = "MUTE", _("MUTE")
 
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, default='')
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default='', related_name='suspect')
     type = models.CharField(_("Type"), max_length=50, choices=PunishmentType, default="", blank=False)
     time = models.DateTimeField(blank=True, null=True)
     reason = models.TextField(max_length=1000, blank=True)

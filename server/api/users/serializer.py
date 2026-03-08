@@ -61,15 +61,53 @@ class NotificationSerializer(serializers.ModelSerializer):
         fields = ('id', 'type', 'content')
 
 
+class UserPunishmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserPunishment
+        fields = ('id', 'user', 'staff', 'type', 'time', 'reason', 'created_at')
+
+    def save(self, **kwargs):
+        instance = super().save(**kwargs)
+
+        if instance.type == 'BAN' and instance.time is None:
+            Notification.objects.create(
+                user=instance.user,
+                type="System",
+                content="You have been permanent banned !",
+            )
+        elif instance.type == 'BAN' and instance.time:
+            Notification.objects.create(
+                user=instance.user,
+                type="System",
+                content=f"You have been temporary banned !",
+            )
+
+        elif instance.type == 'MUTE' and instance.time is None:
+            Notification.objects.create(
+                user=instance.user,
+                type="System",
+                content="You have been permanent muted !",
+            )
+
+        elif instance.type == 'MUTE' and instance.time:
+            Notification.objects.create(
+                user=instance.user,
+                type="System",
+                content=f"You have been temporary muted !",
+            )
+
+
 class ProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
     posts = ProfileOwnPostSerializer(read_only=True, many=True, source='user.post')
     connects = ProfileConnectSerializer(read_only=True, many=True)
     notifications = NotificationSerializer(read_only=True, many=True, source='user.notification')
+    punishment = UserPunishmentSerializer(read_only=True, many=True, source='user.suspect')
 
     class Meta:
         model = Profile
-        fields = ('user', 'avatar', 'banner', 'bio', 'followers_count', 'following_count', 'notifications', 'connects',
+        fields = ('user', 'avatar', 'banner', 'bio', 'followers_count', 'following_count', 'punishment',
+                  'notifications', 'connects',
                   'posts')
 
 
@@ -87,9 +125,21 @@ class RegisterSerializer(serializers.ModelSerializer):
 
         if password != password_confirm:
             raise serializers.ValidationError({'password_confirm': 'Passwords do not match'})
-        else:
-            attrs.pop('password_confirm')
-            return attrs
+
+        return attrs
+
+    def create(self, validated_data):
+        validated_data.pop('password_confirm')
+
+        user = CustomUser.objects.create_user(
+            email=validated_data['email'],
+            first_name=validated_data['first_name'],
+            last_name=validated_data['last_name'],
+            username=validated_data['username'],
+            password=validated_data['password'],
+        )
+
+        return user
 
 
 class LoginSerializer(serializers.Serializer):
@@ -107,41 +157,3 @@ class LoginSerializer(serializers.Serializer):
             raise serializers.ValidationError({"errors": attrs})
 
         return {'user': user}
-
-
-class UserPunishmentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserPunishment
-        fields = ('id', 'user', 'staff', 'type', 'time', 'reason', 'created_at')
-
-    def save(self, **kwargs):
-        instance = super().save(**kwargs)
-
-        if instance.type == 'BAN':
-            Notification.objects.create(
-                user=instance.user,
-                type="System",
-                content="You have been permanent banned !",
-            )
-        elif instance.type == 'BAN' and instance.time:
-            time = instance.time
-            Notification.objects.create(
-                user=instance.user,
-                type="System",
-                content=f"You have been temporary banned on {time - date.today()} !",
-            )
-
-        elif instance.type == 'MUTE' and instance.time:
-            Notification.objects.create(
-                user=instance.user,
-                type="System",
-                content="You have been permanent muted !",
-            )
-
-        elif instance.type == 'MUTE' and instance.time:
-            time = instance.time
-            Notification.objects.create(
-                user=instance.user,
-                type="System",
-                content=f"You have been temporary muted on {time - date.today()} !",
-            )
