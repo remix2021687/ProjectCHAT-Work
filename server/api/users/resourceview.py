@@ -1,13 +1,11 @@
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
-from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 
-from users.models import Profile, Connect, VerificationRequest, Notification, CustomUser
+from users.models import Profile, Connect, VerificationRequest, Notification
 from .serializer import ProfileSerializer, ProfileConnectSerializer, \
-    VerificationResponseSerializer, VerificationRequestCreateSerializer, RegisterSerializer, UserSerializer, \
-    LoginSerializer
+    VerificationResponseSerializer, VerificationRequestCreateSerializer, NotificationSerializer
 
 
 class ProfileViewSet(viewsets.ModelViewSet):
@@ -105,29 +103,3 @@ class VerificationRequestViewSet(viewsets.ModelViewSet):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = CustomUser.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [IsAdminUser, IsAuthenticated]
-
-    @action(detail=False, methods=['post'], url_path='register', permission_classes=[AllowAny])
-    def register(self, request):
-        serializer = RegisterSerializer(data=request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    @action(detail=False, methods=['post'], url_path='login', permission_classes=[AllowAny])
-    def login(self, request):
-        serializer = LoginSerializer(data=request.data)
-
-        if serializer.is_valid(raise_exception=True):
-            refresh = RefreshToken.for_user(request.user)
-            access_token = refresh.access_token
-            return Response({'access': str(access_token), 'refresh': str(refresh)}, status=status.HTTP_200_OK)
-        else:
-            return Response(serializer.errors, status=status.HTTP_401_UNAUTHORIZED)
