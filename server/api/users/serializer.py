@@ -1,4 +1,6 @@
 from rest_framework import serializers
+from django.contrib.auth import authenticate
+from datetime import date
 
 from posts.models import Post
 from users.models import CustomUser, Profile, Connect, VerificationRequest, Notification, UserPunishment
@@ -72,6 +74,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 class RegisterSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True, required=True, style={'input_type': 'password'})
     password_confirm = serializers.CharField(write_only=True, required=True, style={'input_type': 'password'})
 
     class Meta:
@@ -89,14 +92,56 @@ class RegisterSerializer(serializers.ModelSerializer):
             return attrs
 
 
-class LoginSerializer(serializers.ModelSerializer):
-    email = serializers.EmailField()
+class LoginSerializer(serializers.Serializer):
+    email = serializers.EmailField(required=True)
+    password = serializers.CharField(write_only=True, required=True, style={'input_type': 'password'})
 
     class Meta:
         model = CustomUser
         fields = ('email', 'password')
 
+    def validate(self, attrs):
+        user = authenticate(email=attrs['email'], password=attrs['password'])
+
+        if user is None:
+            raise serializers.ValidationError({"errors": attrs})
+
+        return {'user': user}
+
+
 class UserPunishmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserPunishment
-        fields = ('id', 'user', 'staff', 'type', 'reason', 'created_at')
+        fields = ('id', 'user', 'staff', 'type', 'time', 'reason', 'created_at')
+
+    def save(self, **kwargs):
+        instance = super().save(**kwargs)
+
+        if instance.type == 'BAN':
+            Notification.objects.create(
+                user=instance.user,
+                type="System",
+                content="You have been permanent banned !",
+            )
+        elif instance.type == 'BAN' and instance.time:
+            time = instance.time
+            Notification.objects.create(
+                user=instance.user,
+                type="System",
+                content=f"You have been temporary banned on {time - date.today()} !",
+            )
+
+        elif instance.type == 'MUTE' and instance.time:
+            Notification.objects.create(
+                user=instance.user,
+                type="System",
+                content="You have been permanent muted !",
+            )
+
+        elif instance.type == 'MUTE' and instance.time:
+            time = instance.time
+            Notification.objects.create(
+                user=instance.user,
+                type="System",
+                content=f"You have been temporary muted on {time - date.today()} !",
+            )

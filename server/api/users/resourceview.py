@@ -116,8 +116,11 @@ class UserViewSet(viewsets.ModelViewSet):
     def register(self, request):
         serializer = RegisterSerializer(data=request.data)
 
+        # Сделать через CustomUser.object.create()
         if serializer.is_valid():
-            serializer.save()
+            user = CustomUser.objects.create(
+                
+            )
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -126,14 +129,15 @@ class UserViewSet(viewsets.ModelViewSet):
         serializer = LoginSerializer(data=request.data)
 
         if serializer.is_valid(raise_exception=True):
-            refresh = RefreshToken.for_user(request.user)
+            user = serializer.validated_data['user']
+            refresh = RefreshToken.for_user(user)
             access_token = refresh.access_token
             return Response({'access': str(access_token), 'refresh': str(refresh)}, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_401_UNAUTHORIZED)
 
     @action(detail=True, methods=['post'], url_path='punishment')
-    def punish(self, request, pk=None):
+    def punishment(self, request, pk=None):
         suspect = CustomUser.objects.get(pk=pk)
         serializer = UserPunishmentSerializer(data=request.data)
 
