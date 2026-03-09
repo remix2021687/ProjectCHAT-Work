@@ -1,4 +1,6 @@
 .AuthPage {
+    display: flex;
+    flex-direction: row;
     width: 100%;
     height: 100vh;
 
@@ -27,6 +29,57 @@
             color: #CBD5E1;
             font-size: 16px;
             max-width: 512px;
+        }
+    }
+
+    .AuthPage_right_block {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        height: 100%;
+        background-color: #191022;
+
+        .AuthPage_right_block_select {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 60%;
+            height: 60px;
+            background-color: rgba(127, 19, 236, 0.2);
+            border-radius: 12px;
+
+
+            button {
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: bold;
+                color: #94A3B8;
+                width: 100%;
+
+                span {
+                    position: relative;
+                    z-index: 2;
+                    transition: 0.5s ease;
+                }
+
+                &.active {
+                    span {
+                        color: white;
+                    }
+                }
+            }
+            
+            .AuthPage_right_block_select_indecator {
+                position: absolute;
+                width: 50%;
+                height: 100%;
+                background-color: #7F13EC;
+                border-radius: 12px;
+            }
         }
     }
 }

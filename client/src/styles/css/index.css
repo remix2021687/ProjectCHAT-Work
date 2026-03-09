@@ -259,6 +259,13 @@ body {
 }
 
 .AuthPage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   width: 100%;
   height: 100vh;
 }
@@ -295,4 +302,60 @@ body {
   color: #CBD5E1;
   font-size: 16px;
   max-width: 512px;
+}
+.AuthPage .AuthPage_right_block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 50%;
+  height: 100%;
+  background-color: #191022;
+}
+.AuthPage .AuthPage_right_block .AuthPage_right_block_select {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 60%;
+  height: 60px;
+  background-color: rgba(127, 19, 236, 0.2);
+  border-radius: 12px;
+}
+.AuthPage .AuthPage_right_block .AuthPage_right_block_select button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  color: #94A3B8;
+  width: 100%;
+}
+.AuthPage .AuthPage_right_block .AuthPage_right_block_select button span {
+  position: relative;
+  z-index: 2;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.AuthPage .AuthPage_right_block .AuthPage_right_block_select button.active span {
+  color: white;
+}
+.AuthPage .AuthPage_right_block .AuthPage_right_block_select .AuthPage_right_block_select_indecator {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background-color: #7F13EC;
+  border-radius: 12px;
 }
