@@ -1,5 +1,5 @@
 import type React from "react"
-import { Route, Routes, useNavigate } from "react-router"
+import { Route, Routes } from "react-router"
 import { PageTemplate } from "./components/PageTemplate/PageTemplate"
 
 interface RouterProps {
