@@ -18,6 +18,10 @@
     }
 
     .RegisterForm_title {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        
         h2 {
             font-size: 30px;
             font-weight: bold;
@@ -34,18 +38,19 @@
         flex-direction: column;
         gap: 25px;
 
-        label {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            position: relative;
-            
-            span {
+        span {
                 font-size: 14px;
                 font-weight: bold;
                 color: red;
                 padding-left: 30px;
             }
+
+        label {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
             
             h3 {
                 font-size: 14px;
@@ -68,7 +73,7 @@
             .icon {
                 position: absolute;
                 left: 16px;
-                top: 50%;
+                top: 65%;
                 transform: translateY(-50%);
                 color: #94A3B8;
             }
