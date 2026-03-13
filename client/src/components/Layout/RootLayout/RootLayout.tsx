@@ -1,4 +1,5 @@
-import { TopNavMenu } from "./components/TopNavMenu/LeftNavMenu"
+import { TopNavMenu } from "./components/TopNavMenu/TopNavMenu"
+
 
 interface RootLayoutProps {
     children: React.ReactNode

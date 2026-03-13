@@ -1,5 +1,5 @@
 import type React from "react"
-import { Route, Routes, Navigate } from "react-router"
+import { Route, Routes } from "react-router"
 import { PageTemplate } from "./components/PageTemplate/PageTemplate"
 
 interface RouterProps {
@@ -7,11 +7,12 @@ interface RouterProps {
 }
 
 export const RouterComponent: React.FC<RouterProps> = ({ components }) => {
-    const { HomePage, RootLayout } = components
+    const { HomePage, AuthPage, RootLayout } = components
 
     return (
         <Routes>
-            <Route index element={<PageTemplate Layout={RootLayout} Content={HomePage}/>} />
+            <Route index element={<PageTemplate Layout={RootLayout} Content={HomePage} />} />
+            <Route path="auth/" element={<AuthPage />} />
         </Routes>
     )
 }
