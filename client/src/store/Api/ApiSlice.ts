@@ -21,6 +21,10 @@ type LoginResponse = {
 	refrash: string;
 };
 
+export type VerifyRequest = {
+	code: number;
+};
+
 export const api = createApi({
 	reducerPath: "API",
 	baseQuery: fetchBaseQuery({
@@ -41,6 +45,15 @@ export const api = createApi({
 		LoginUser: build.mutation<LoginResponse, LoginRequest>({
 			query: (body) => ({
 				url: "users/login/",
+				method: "POST",
+				body,
+			}),
+			invalidatesTags: ["User"],
+		}),
+
+		VerifyUser: build.mutation<void, VerifyRequest>({
+			query: (body) => ({
+				url: "users/verify/",
 				method: "POST",
 				body,
 			}),
