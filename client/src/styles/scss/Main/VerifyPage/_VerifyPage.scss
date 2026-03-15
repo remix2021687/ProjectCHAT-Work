@@ -64,6 +64,10 @@
 		border-radius: 16px;
 
 		label {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+
 			input {
 				width: 100%;
 				height: 56px;
@@ -75,6 +79,19 @@
 				font-weight: bold;
 				outline: none;
 				color: white;
+				-moz-appearance: textfield;
+
+				&::-webkit-outer-spin-button,
+				&::-webkit-inner-spin-button {
+					display: none;
+					-webkit-appearance: none;
+					margin: 0;
+				}
+			}
+			span {
+				font-weight: bold;
+				color: red;
+				margin-left: 15px;
 			}
 		}
 

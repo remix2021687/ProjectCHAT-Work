@@ -13,10 +13,21 @@ export const RouterComponent: React.FC<RouterProps> = ({ components }) => {
 		<Routes>
 			<Route
 				index
-				element={<PageTemplate Layout={RootLayout} Content={HomePage} />}
+				element={
+					<PageTemplate
+						Layout={RootLayout}
+						Content={HomePage}
+					/>
+				}
 			/>
-			<Route path='auth/' element={<AuthPage />} />
-			<Route path='auth/verify' element={<VerifyPage />} />
+			<Route
+				path="auth/"
+				element={<AuthPage />}
+			/>
+			<Route
+				path="auth/verify/"
+				element={<VerifyPage />}
+			/>
 		</Routes>
 	);
 };

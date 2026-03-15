@@ -127,9 +127,12 @@ class UserViewSet(viewsets.ModelViewSet):
 
         if serializer.is_valid(raise_exception=True):
             user = serializer.validated_data['user']
-            refresh = RefreshToken.for_user(user)
-            access_token = refresh.access_token
-            return Response({'access': str(access_token), 'refresh': str(refresh)}, status=status.HTTP_200_OK)
+
+            if user.is_email_verified:
+                refresh = RefreshToken.for_user(user)
+                access_token = refresh.access_token
+                return Response({'access': str(access_token), 'refresh': str(refresh)}, status=status.HTTP_200_OK)
+            return Response({"message": 'Email is not verificated !'}, status=status.HTTP_400_BAD_REQUEST)
         else:
             return Response(serializer.errors, status=status.HTTP_401_UNAUTHORIZED)
 

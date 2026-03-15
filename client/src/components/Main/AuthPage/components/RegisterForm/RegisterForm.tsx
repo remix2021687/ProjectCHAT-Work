@@ -18,8 +18,7 @@ export const RegisterForm: React.FC = () => {
 
 	const onSubmit = async (data: RegisterRequest) => {
 		try {
-			const result = await RegisterUser(data);
-			if (result) {
+			await RegisterUser(data).then((res) => {
 				toast.success("Register Success. Welcome to Paradox !", {
 					position: "top-center",
 					autoClose: 3000,
@@ -27,8 +26,8 @@ export const RegisterForm: React.FC = () => {
 					closeOnClick: true,
 				});
 
-				navigate("/");
-			}
+				navigate("/auth/verify/");
+			});
 		} catch (err: any) {
 			console.log("err");
 		}

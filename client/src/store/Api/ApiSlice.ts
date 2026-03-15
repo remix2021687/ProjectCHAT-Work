@@ -18,7 +18,7 @@ export type LoginRequest = {
 
 type LoginResponse = {
 	access: string;
-	refrash: string;
+	refresh: string;
 };
 
 export type VerifyRequest = {
@@ -53,7 +53,7 @@ export const api = createApi({
 
 		VerifyUser: build.mutation<void, VerifyRequest>({
 			query: (body) => ({
-				url: "users/verify/",
+				url: "users/verify-email/",
 				method: "POST",
 				body,
 			}),
@@ -62,4 +62,8 @@ export const api = createApi({
 	}),
 });
 
-export const { useRegistersUserMutation, useLoginUserMutation } = api;
+export const {
+	useRegistersUserMutation,
+	useLoginUserMutation,
+	useVerifyUserMutation,
+} = api;
