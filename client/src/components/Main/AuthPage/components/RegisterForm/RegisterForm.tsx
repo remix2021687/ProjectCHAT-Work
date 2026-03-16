@@ -18,18 +18,22 @@ export const RegisterForm: React.FC = () => {
 
 	const onSubmit = async (data: RegisterRequest) => {
 		try {
-			await RegisterUser(data).then((res) => {
-				toast.success("Register Success. Welcome to Paradox !", {
-					position: "top-center",
-					autoClose: 3000,
-					hideProgressBar: true,
-					closeOnClick: true,
-				});
-
-				navigate("/auth/verify/");
+			await RegisterUser(data).unwrap();
+			toast.success("Register Success. Welcome to Paradox !", {
+				position: "top-center",
+				autoClose: 3000,
+				hideProgressBar: true,
+				closeOnClick: true,
 			});
+
+			navigate("/auth/verify/");
 		} catch (err: any) {
-			console.log("err");
+			toast.error("Register is Failed. Please try later !", {
+				position: "top-center",
+				autoClose: 3000,
+				hideProgressBar: true,
+				closeOnClick: true,
+			});
 		}
 	};
 

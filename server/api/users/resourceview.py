@@ -42,7 +42,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         except Connect.DoesNotExist:
-            return Response({"error": "Link does not exist"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"message": "Link does not exist"}, status=status.HTTP_404_NOT_FOUND)
 
     @action(detail=False, methods=['delete'], url_path='connect/(?P<pk>[0-9a-fA-F-]+)/delete')
     def remove_connect(self, request, pk=None):
@@ -134,7 +134,9 @@ class UserViewSet(viewsets.ModelViewSet):
                 return Response({'access': str(access_token), 'refresh': str(refresh)}, status=status.HTTP_200_OK)
             return Response({"message": 'Email is not verificated !'}, status=status.HTTP_400_BAD_REQUEST)
         else:
-            return Response(serializer.errors, status=status.HTTP_401_UNAUTHORIZED)
+            return Response({
+                "message": 'Email and password is incorrecte ! Try later'
+            }, status=status.HTTP_401_UNAUTHORIZED)
 
     @action(detail=False, methods=['post'], url_path='verify-email', permission_classes=[AllowAny])
     def verify_email(self, request):
