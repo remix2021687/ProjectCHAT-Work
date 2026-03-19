@@ -27,7 +27,7 @@ export const LoginForm: React.FC = () => {
 			navigate("/");
 
 			toast.success("Login Success. Welcome to Paradox !", {
-				position: "top-center",
+				position: "top-right",
 				autoClose: 3000,
 				hideProgressBar: true,
 				closeOnClick: true,
@@ -37,7 +37,7 @@ export const LoginForm: React.FC = () => {
 
 			if (errMSG) {
 				toast.error(errMSG, {
-					position: "top-center",
+					position: "top-right",
 					autoClose: 3000,
 					hideProgressBar: true,
 					closeOnClick: true,

@@ -1,11 +1,14 @@
 import { useRegistersUserMutation } from "@store/Api/ApiSlice";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { addEmail } from "@/store/Api/EmailVerifySlice";
 import type { RegisterRequest } from "@store/Api/ApiSlice";
 import { UserIcon, EnvelopeIcon, PasswordIcon } from "@phosphor-icons/react";
 
 export const RegisterForm: React.FC = () => {
+	const dispatch = useDispatch();
 	const {
 		register,
 		watch,
@@ -19,17 +22,13 @@ export const RegisterForm: React.FC = () => {
 	const onSubmit = async (data: RegisterRequest) => {
 		try {
 			await RegisterUser(data).unwrap();
-			toast.success("Register Success. Welcome to Paradox !", {
-				position: "top-center",
-				autoClose: 3000,
-				hideProgressBar: true,
-				closeOnClick: true,
-			});
 
-			navigate("/auth/verify/");
+			dispatch(addEmail(data.email));
+
+			await navigate("/auth/verify/");
 		} catch (err: any) {
 			toast.error("Register is Failed. Please try later !", {
-				position: "top-center",
+				position: "top-right",
 				autoClose: 3000,
 				hideProgressBar: true,
 				closeOnClick: true,

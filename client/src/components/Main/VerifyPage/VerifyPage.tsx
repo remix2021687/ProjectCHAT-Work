@@ -1,12 +1,19 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { useVerifyUserMutation } from "@store/Api/ApiSlice";
-import type { VerifyRequest } from "@store/Api/ApiSlice";
 import { SealCheckIcon } from "@phosphor-icons/react";
+import type { VerifyRequest } from "@store/Api/ApiSlice";
+import type { RootState } from "@/store/store";
 
 export const VerifyPage: React.FC = () => {
 	const navigate = useNavigate();
+	const EmailSlice = useSelector(
+		(state: RootState) => state.emailverify.email,
+	);
+
 	const {
 		register,
 		handleSubmit,
@@ -21,11 +28,22 @@ export const VerifyPage: React.FC = () => {
 
 	const onSubmit = async (data: VerifyRequest) => {
 		try {
-			const result = await verifyUser(data);
+			await verifyUser({
+				email: EmailSlice,
+				email_verification_code: data.email_verification_code,
+			}).unwrap();
 
-			if (result) {
-				navigate("/auth");
-			}
+			toast.success(
+				"Email Verification Success. Please Login in your account !",
+				{
+					position: "top-right",
+					autoClose: 3000,
+					hideProgressBar: true,
+					closeOnClick: true,
+				},
+			);
+
+			navigate("/auth");
 		} catch (err) {
 			console.error("Error verifying user:", error);
 		}
@@ -45,7 +63,7 @@ export const VerifyPage: React.FC = () => {
 					<h2>Check your inbox</h2>
 					<p>
 						We've sent a 6-digit verification code to alex. <br />
-						<span>design@example.com</span>
+						<span>{EmailSlice}</span>
 					</p>
 				</section>
 			</section>
@@ -54,7 +72,7 @@ export const VerifyPage: React.FC = () => {
 				onSubmit={handleSubmit(onSubmit)}>
 				<label htmlFor="verify_input">
 					<input
-						{...register("code", {
+						{...register("email_verification_code", {
 							required: {
 								value: true,
 								message: "Verify is required",
@@ -71,8 +89,8 @@ export const VerifyPage: React.FC = () => {
 						type="number"
 						placeholder="Verify Code"
 					/>
-					{errors.code?.message ? (
-						<span>{errors.code?.message}</span>
+					{errors.email_verification_code?.message ? (
+						<span>{errors.email_verification_code?.message}</span>
 					) : null}
 				</label>
 				<button>Send Code</button>

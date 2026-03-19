@@ -22,7 +22,8 @@ type LoginResponse = {
 };
 
 export type VerifyRequest = {
-	code: number;
+	email: string;
+	email_verification_code: number;
 };
 
 export const api = createApi({
