@@ -1,11 +1,14 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { addEmail } from "@store/Api/EmailVerifySlice";
 import { useLoginUserMutation } from "@store/Api/ApiSlice";
 import type { LoginRequest } from "@store/Api/ApiSlice";
 import { EnvelopeIcon, PasswordIcon } from "@phosphor-icons/react";
 import { toast } from "react-toastify";
 
 export const LoginForm: React.FC = () => {
+	const dispatch = useDispatch();
 	const {
 		register,
 		handleSubmit,
@@ -33,15 +36,30 @@ export const LoginForm: React.FC = () => {
 				closeOnClick: true,
 			});
 		} catch (res: any) {
-			const errMSG = res.data.message[0];
+			const errMSG = res.data.message;
 
-			if (errMSG) {
-				toast.error(errMSG, {
-					position: "top-right",
-					autoClose: 3000,
-					hideProgressBar: true,
-					closeOnClick: true,
-				});
+			switch (errMSG) {
+				case "Email is not verificated !":
+					navigate("/auth/verify/");
+
+					dispatch(addEmail(data.email));
+
+					toast.error(`${errMSG} Please verificat your account !`, {
+						position: "top-right",
+						autoClose: 3000,
+						hideProgressBar: true,
+						closeOnClick: true,
+					});
+					break;
+
+				default:
+					toast.error(errMSG[0], {
+						position: "top-right",
+						autoClose: 3000,
+						hideProgressBar: true,
+						closeOnClick: true,
+					});
+					break;
 			}
 		}
 	};

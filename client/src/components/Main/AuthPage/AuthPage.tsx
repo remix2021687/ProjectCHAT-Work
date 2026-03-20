@@ -1,4 +1,5 @@
-import { useState, type MouseEventHandler } from "react";
+import { useState, useEffect, type MouseEventHandler } from "react";
+import { useNavigate } from "react-router";
 import { motion } from "motion/react";
 import { RegisterForm } from "./components/RegisterForm/RegisterForm";
 import { LoginForm } from "./components/LoginForm/LoginForm";
@@ -12,12 +13,20 @@ type ButtonDataType = {
 };
 
 export const AuthPage: React.FC = () => {
+	const token = localStorage.getItem("token");
+	const navigate = useNavigate();
 	const [activTab, setAcitvTab] = useState("signUp");
 
 	const ButtonHandler: MouseEventHandler<HTMLButtonElement> = (event) => {
 		const value = (event.currentTarget as HTMLButtonElement).value;
 		setAcitvTab(value);
 	};
+
+	useEffect(() => {
+		if (token) {
+			navigate(-1);
+		}
+	}, [token]);
 
 	const ButtonData: Array<ButtonDataType> = [
 		{

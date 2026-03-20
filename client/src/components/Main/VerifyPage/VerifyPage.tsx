@@ -9,6 +9,7 @@ import type { VerifyRequest } from "@store/Api/ApiSlice";
 import type { RootState } from "@/store/store";
 
 export const VerifyPage: React.FC = () => {
+	const token = localStorage.getItem("token");
 	const navigate = useNavigate();
 	const EmailSlice = useSelector(
 		(state: RootState) => state.emailverify.email,
@@ -25,6 +26,12 @@ export const VerifyPage: React.FC = () => {
 	useEffect(() => {
 		document.title = "Paradox Verify Email";
 	}, []);
+
+	useEffect(() => {
+		if (token) {
+			navigate(-1);
+		}
+	}, [token]);
 
 	const onSubmit = async (data: VerifyRequest) => {
 		try {
@@ -75,7 +82,7 @@ export const VerifyPage: React.FC = () => {
 						{...register("email_verification_code", {
 							required: {
 								value: true,
-								message: "Verify is required",
+								message: "Verify input is required",
 							},
 							validate: (value: number) => {
 								const codeStr = value.toString();
