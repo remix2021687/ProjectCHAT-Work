@@ -26,11 +26,11 @@
 	}
 
 	.AuthPage {
+		height: fit-content;
 		flex-direction: column;
 
 		.AuthPage_right_block {
 			width: 100%;
-			height: auto;
 
 			.AuthPage_right_block_select {
 				width: 90%;
