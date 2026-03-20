@@ -18,21 +18,18 @@ export type LoginRequest = {
 
 type LoginResponse = {
 	access: string;
-	refrash: string;
+	refresh: string;
+};
+
+export type VerifyRequest = {
+	email: string;
+	email_verification_code: number;
 };
 
 export const api = createApi({
 	reducerPath: "API",
 	baseQuery: fetchBaseQuery({
 		baseUrl: "http://127.0.0.1:8000/api/",
-		// prepareHeaders: (headers, { getState }) => {
-		// 	const token = (getState() as RootState).auth?.token;
-		// 	if (token) {
-		// 		headers.set("authorization", `Bearer ${token}`);
-		// 	}
-
-		// 	return headers;
-		// },
 	}),
 	tagTypes: ["User", "Post"] as const,
 
@@ -52,8 +49,22 @@ export const api = createApi({
 				method: "POST",
 				body,
 			}),
+			invalidatesTags: ["User"],
+		}),
+
+		VerifyUser: build.mutation<void, VerifyRequest>({
+			query: (body) => ({
+				url: "users/verify-email/",
+				method: "POST",
+				body,
+			}),
+			invalidatesTags: ["User"],
 		}),
 	}),
 });
 
-export const { useRegistersUserMutation, useLoginUserMutation } = api;
+export const {
+	useRegistersUserMutation,
+	useLoginUserMutation,
+	useVerifyUserMutation,
+} = api;

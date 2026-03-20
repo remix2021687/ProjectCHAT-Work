@@ -1,54 +1,47 @@
-import { useState, useRef, useEffect } from "react";
-import { gsap } from "gsap";
-import { Flip } from "gsap/Flip";
+import { useState, useEffect, type MouseEventHandler } from "react";
+import { useNavigate } from "react-router";
+import { motion } from "motion/react";
 import { RegisterForm } from "./components/RegisterForm/RegisterForm";
 import { LoginForm } from "./components/LoginForm/LoginForm";
 import icon from "@assets/svg/Overlay+Border.svg";
 
-gsap.registerPlugin(Flip);
+type ButtonDataType = {
+	id: number;
+	value: string;
+	text: string;
+	onClick: MouseEventHandler<HTMLButtonElement>;
+};
 
 export const AuthPage: React.FC = () => {
-	const tabsData: Array<{ id: string; title: string }> = [
-		{ id: "signUp", title: "Sign Up" },
-		{ id: "signIn", title: "Sign In" },
-	];
-	const [activeTab, setActiveTab] = useState(tabsData[0].id);
-	const indecatorRef = useRef<HTMLSpanElement>(null);
-	const tabsRef = useRef<(HTMLButtonElement | null)[]>([]);
+	const token = localStorage.getItem("token");
+	const navigate = useNavigate();
+	const [activTab, setAcitvTab] = useState("signUp");
 
-	useEffect(() => {
-		document.title = "Paradox - Auth";
-	});
-
-	useEffect(() => {
-		const active = tabsRef.current.find(
-			(tab) => tab?.dataset.id === activeTab,
-		);
-
-		if (active && indecatorRef.current) {
-			indecatorRef.current.style.width = `${active.offsetWidth}px`;
-			indecatorRef.current.style.left = `${active.offsetLeft}px`;
-		}
-	}, []);
-
-	const handleTabClick = (id: string) => {
-		if (id === activeTab) return;
-
-		const state = Flip.getState(indecatorRef.current);
-		setActiveTab(id);
-
-		const newActive = tabsRef.current.find((tab) => tab?.dataset.id === id);
-		if (newActive && indecatorRef.current) {
-			indecatorRef.current.style.left = `${newActive.offsetLeft}px`;
-			indecatorRef.current.style.width = `${newActive.offsetWidth}px`;
-		}
-
-		Flip.from(state, {
-			duration: 0.5,
-			ease: "power2.out",
-			absolute: true,
-		});
+	const ButtonHandler: MouseEventHandler<HTMLButtonElement> = (event) => {
+		const value = (event.currentTarget as HTMLButtonElement).value;
+		setAcitvTab(value);
 	};
+
+	useEffect(() => {
+		if (token) {
+			navigate(-1);
+		}
+	}, [token]);
+
+	const ButtonData: Array<ButtonDataType> = [
+		{
+			id: 1,
+			value: "signUp",
+			text: "Sign Up",
+			onClick: ButtonHandler,
+		},
+		{
+			id: 2,
+			value: "signIn",
+			text: "Sign In",
+			onClick: ButtonHandler,
+		},
+	];
 
 	return (
 		<section className="AuthPage">
@@ -68,23 +61,35 @@ export const AuthPage: React.FC = () => {
 			</section>
 			<section className="AuthPage_right_block">
 				<section className="AuthPage_right_block_select">
-					{tabsData.map((tab, index) => (
+					{ButtonData.map((data) => (
 						<button
-							key={tab.id}
-							ref={(el) => {
-								tabsRef.current[index] = el;
-							}}
-							data-id={tab.id}
-							className={activeTab === tab.id ? "active" : ""}
-							onClick={() => handleTabClick(tab.id)}>
-							<span>{tab.title}</span>
+							key={data.id}
+							value={data.value}
+							onClick={data.onClick}>
+							<motion.span
+								animate={
+									activTab == data.value
+										? { color: "white" }
+										: { color: "#94a3b8" }
+								}
+								className="AuthPage_right_block_select_text">
+								{data.text}
+							</motion.span>
+							{activTab === data.value && (
+								<motion.span
+									layoutId="selected"
+									transition={{
+										type: "spring",
+										bounce: 0.25,
+									}}
+									className="AuthPage_right_block_select_indecator"></motion.span>
+							)}
 						</button>
 					))}
-					<span
-						ref={indecatorRef}
-						className="AuthPage_right_block_select_indecator"></span>
 				</section>
-				{activeTab === "signUp" ? <RegisterForm /> : <LoginForm />}
+				<section className="AuthPage_right_block_content">
+					{activTab === "signUp" ? <RegisterForm /> : <LoginForm />}
+				</section>
 			</section>
 		</section>
 	);

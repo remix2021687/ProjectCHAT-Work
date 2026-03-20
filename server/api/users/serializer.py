@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate
-from datetime import date
 
 from posts.models import Post
 from users.models import CustomUser, Profile, Connect, VerificationRequest, Notification, UserPunishment
@@ -154,6 +153,6 @@ class LoginSerializer(serializers.Serializer):
         user = authenticate(email=attrs['email'], password=attrs['password'])
 
         if user is None:
-            raise serializers.ValidationError({"errors": attrs})
+            raise serializers.ValidationError({"message": "Email or password is incorrect! Please try again!"})
 
         return {'user': user}

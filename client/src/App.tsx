@@ -18,7 +18,7 @@ export const App: React.FC<AppProps> = ({ Router, Components }) => {
 		if (!token) {
 			navigate("auth/");
 		}
-	}, [token, navigate]);
+	}, [token]);
 
 	return (
 		<>

@@ -42,7 +42,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         except Connect.DoesNotExist:
-            return Response({"error": "Link does not exist"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"message": "Link does not exist"}, status=status.HTTP_404_NOT_FOUND)
 
     @action(detail=False, methods=['delete'], url_path='connect/(?P<pk>[0-9a-fA-F-]+)/delete')
     def remove_connect(self, request, pk=None):
@@ -125,13 +125,17 @@ class UserViewSet(viewsets.ModelViewSet):
     def login(self, request):
         serializer = LoginSerializer(data=request.data)
 
-        if serializer.is_valid(raise_exception=True):
-            user = serializer.validated_data['user']
-            refresh = RefreshToken.for_user(user)
-            access_token = refresh.access_token
-            return Response({'access': str(access_token), 'refresh': str(refresh)}, status=status.HTTP_200_OK)
-        else:
-            return Response(serializer.errors, status=status.HTTP_401_UNAUTHORIZED)
+        try:
+            if serializer.is_valid(raise_exception=True):
+                user = serializer.validated_data['user']
+
+                if user.is_email_verified:
+                    refresh = RefreshToken.for_user(user)
+                    access_token = refresh.access_token
+                    return Response({'access': str(access_token), 'refresh': str(refresh)}, status=status.HTTP_200_OK)
+                return Response({"message": 'Email is not verificated !'}, status=status.HTTP_400_BAD_REQUEST)
+        except CustomUser.DoesNotExist:
+            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
 
     @action(detail=False, methods=['post'], url_path='verify-email', permission_classes=[AllowAny])
     def verify_email(self, request):
@@ -139,11 +143,13 @@ class UserViewSet(viewsets.ModelViewSet):
         verification_code = request.data['email_verification_code']
         try:
             user = CustomUser.objects.get(email=email)
-            if user.email_verification_code == verification_code:
-                user.is_email_verified = True
-                user.email_verification_code = None
-                user.save()
-                return Response({'message': "Email is verification"}, status=status.HTTP_200_OK)
+            if user.email_verification_code:
+                if user.email_verification_code == verification_code:
+                    user.is_email_verified = True
+                    user.email_verification_code = None
+                    user.save()
+                    return Response({'message': "Email is verification"}, status=status.HTTP_200_OK)
+            return Response({'message': "Code is not exist !"}, status=status.HTTP_404_NOT_FOUND)
         except CustomUser.DoesNotExist:
             return Response({"error": "User not found"}, status=status.HTTP_400_BAD_REQUEST)
 

@@ -267,7 +267,7 @@ body {
       -ms-flex-direction: row;
           flex-direction: row;
   width: 100%;
-  height: 100vh;
+  height: 130vh;
 }
 .AuthPage .AuthPage_left_block {
   display: -webkit-box;
@@ -285,7 +285,6 @@ body {
           justify-content: center;
   gap: 40px;
   width: 50%;
-  height: 100%;
   text-align: center;
   background: linear-gradient(120deg, rgb(127, 19, 236) 0%, rgb(25, 16, 34) 50%, rgb(15, 23, 42) 100%);
 }
@@ -296,10 +295,10 @@ body {
   letter-spacing: 3px;
 }
 .AuthPage .AuthPage_left_block h2 span {
-  color: #7F13EC;
+  color: #7f13ec;
 }
 .AuthPage .AuthPage_left_block p {
-  color: #CBD5E1;
+  color: #cbd5e1;
   font-size: 16px;
   max-width: 512px;
 }
@@ -317,12 +316,11 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding: 25px 0;
   width: 50%;
-  height: 100%;
   background-color: #191022;
 }
 .AuthPage .AuthPage_right_block .AuthPage_right_block_select {
-  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -330,49 +328,68 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 60%;
   height: 60px;
   background-color: rgba(127, 19, 236, 0.2);
   border-radius: 12px;
 }
 .AuthPage .AuthPage_right_block .AuthPage_right_block_select button {
+  position: relative;
   background: none;
   border: none;
   cursor: pointer;
   font-size: 14px;
   font-weight: bold;
   width: 100%;
+  height: 100%;
 }
-.AuthPage .AuthPage_right_block .AuthPage_right_block_select button > span {
+.AuthPage .AuthPage_right_block .AuthPage_right_block_select button .AuthPage_right_block_select_text {
   position: relative;
   z-index: 2;
-  color: #94A3B8;
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
+  color: #94a3b8;
 }
-.AuthPage .AuthPage_right_block .AuthPage_right_block_select button.active span {
-  color: white;
-}
-.AuthPage .AuthPage_right_block .AuthPage_right_block_select .AuthPage_right_block_select_indecator {
+.AuthPage .AuthPage_right_block .AuthPage_right_block_select button .AuthPage_right_block_select_indecator {
   position: absolute;
-  width: 50%;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-  background-color: #7F13EC;
+  background-color: #7f13ec;
   border-radius: 12px;
 }
-.AuthPage .AuthPage_right_block span {
+.AuthPage .AuthPage_right_block .AuthPage_right_block_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  justify-self: flex-end !important;
+  width: 100%;
+}
+.AuthPage .AuthPage_right_block .AuthPage_right_block_content span {
   font-size: 14px;
   font-weight: bold;
   color: red;
   padding-left: 30px;
 }
-.AuthPage .AuthPage_right_block button {
+.AuthPage .AuthPage_right_block .AuthPage_right_block_content button {
   width: 100%;
   height: 53px;
-  background-color: #7F13EC;
+  background-color: #7f13ec;
   border: none;
   border-radius: 8px;
   color: white;
@@ -380,7 +397,7 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
-.AuthPage .AuthPage_right_block label {
+.AuthPage .AuthPage_right_block .AuthPage_right_block_content label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -394,29 +411,29 @@ body {
   gap: 8px;
   position: relative;
 }
-.AuthPage .AuthPage_right_block label h3 {
+.AuthPage .AuthPage_right_block .AuthPage_right_block_content label h3 {
   font-size: 14px;
   font-weight: bold;
-  color: #E2E8F0;
+  color: #e2e8f0;
 }
-.AuthPage .AuthPage_right_block label input {
+.AuthPage .AuthPage_right_block .AuthPage_right_block_content label input {
   width: 100%;
   height: 53px;
   background: none;
   border: 1px solid rgba(127, 19, 236, 0.2);
   border-radius: 8px;
   font-size: 16px;
-  color: #94A3B8;
+  color: #94a3b8;
   padding: 0 49px;
   outline: none;
 }
-.AuthPage .AuthPage_right_block label .icon {
+.AuthPage .AuthPage_right_block .AuthPage_right_block_content label .icon {
   position: absolute;
   left: 16px;
   top: 65%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  color: #94A3B8;
+  color: #94a3b8;
 }
 
 .RegisterForm {
@@ -448,7 +465,7 @@ body {
 }
 .RegisterForm .RegisterForm_title p {
   font-size: 16px;
-  color: #94A3B8;
+  color: #94a3b8;
 }
 .RegisterForm .RegisterForm_inputs {
   display: -webkit-box;
@@ -490,5 +507,188 @@ body {
 }
 .LoginForm .LoginForm_title p {
   font-size: 16px;
-  color: #94A3B8;
+  color: #94a3b8;
+}
+
+.VerifyPage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100vh;
+  gap: 32px;
+  background-color: black;
+  color: white;
+}
+.VerifyPage .VerifyPage_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.VerifyPage .VerifyPage_header .VerifyPage_header_icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 37px;
+  background-color: rgba(169, 85, 247, 0.1);
+}
+.VerifyPage .VerifyPage_header .VerifyPage_header_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 12px;
+  text-align: center;
+}
+.VerifyPage .VerifyPage_header .VerifyPage_header_content h2 {
+  font-size: 30px;
+  font-weight: bold;
+}
+.VerifyPage .VerifyPage_header .VerifyPage_header_content p {
+  font-size: 16px;
+  color: #94a3b8;
+  line-height: 30px;
+}
+.VerifyPage .VerifyPage_header .VerifyPage_header_content p span {
+  color: #a855f7;
+  font-weight: bold;
+  font-size: 18px;
+}
+.VerifyPage .VerifyPage_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 18px;
+  width: 40%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 60px 40px;
+  background-color: #1e293b;
+  border: 2px solid rgba(169, 85, 247, 0.1);
+  -webkit-box-shadow: 0px 0px 100px -32px #a855f7;
+          box-shadow: 0px 0px 100px -32px #a855f7;
+  border-radius: 16px;
+}
+.VerifyPage .VerifyPage_form label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 8px;
+}
+.VerifyPage .VerifyPage_form label input {
+  width: 100%;
+  height: 56px;
+  border: 2px solid #94a3b8;
+  border-radius: 10px;
+  padding: 0 16px;
+  background-color: #334155;
+  font-size: 18px;
+  font-weight: bold;
+  outline: none;
+  color: white;
+  -moz-appearance: textfield;
+}
+.VerifyPage .VerifyPage_form label input::-webkit-outer-spin-button, .VerifyPage .VerifyPage_form label input::-webkit-inner-spin-button {
+  display: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+.VerifyPage .VerifyPage_form label span {
+  font-weight: bold;
+  color: red;
+  margin-left: 15px;
+}
+.VerifyPage .VerifyPage_form button {
+  height: 60px;
+  background-color: #a855f7;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+  .RegisterForm {
+    width: 85%;
+  }
+  .LoginForm {
+    width: 85%;
+  }
+  .AuthPage .AuthPage_right_block .AuthPage_right_block_select {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 792px) {
+  .RegisterForm {
+    width: 85%;
+  }
+  .LoginForm {
+    width: 85%;
+  }
+  .AuthPage {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .AuthPage .AuthPage_right_block {
+    width: 100%;
+  }
+  .AuthPage .AuthPage_right_block .AuthPage_right_block_select {
+    width: 90%;
+  }
+  .AuthPage .AuthPage_left_block {
+    width: 100%;
+    height: 100vh;
+  }
 }

@@ -1,0 +1,45 @@
+@media screen and (max-width: 1200px) {
+	.RegisterForm {
+		width: 85%;
+	}
+
+	.LoginForm {
+		width: 85%;
+	}
+
+	.AuthPage {
+		.AuthPage_right_block {
+			.AuthPage_right_block_select {
+				width: 90%;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 792px) {
+	.RegisterForm {
+		width: 85%;
+	}
+
+	.LoginForm {
+		width: 85%;
+	}
+
+	.AuthPage {
+		height: fit-content;
+		flex-direction: column;
+
+		.AuthPage_right_block {
+			width: 100%;
+
+			.AuthPage_right_block_select {
+				width: 90%;
+			}
+		}
+
+		.AuthPage_left_block {
+			width: 100%;
+			height: 100vh;
+		}
+	}
+}
