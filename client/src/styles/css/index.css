@@ -692,3 +692,13 @@ body {
     height: 100vh;
   }
 }
+@media screen and (max-width: 1200px) {
+  .VerifyPage .VerifyPage_form {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 792px) {
+  .VerifyPage .VerifyPage_form {
+    width: 95%;
+  }
+}

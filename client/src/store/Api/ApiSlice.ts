@@ -29,7 +29,7 @@ export type VerifyRequest = {
 export const api = createApi({
 	reducerPath: "API",
 	baseQuery: fetchBaseQuery({
-		baseUrl: "http://127.0.0.1:8000/api/",
+		baseUrl: import.meta.env.VITE_URL_API,
 	}),
 	tagTypes: ["User", "Post"] as const,
 
