@@ -19,9 +19,9 @@ jobs:
       postgres:
         image: postgres:16
         env:
-          POSTGRES_DB: TESTDB
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: 123456789
+          POSTGRES_DB: WORKDB
+          POSTGRES_USER: ROOT
+          POSTGRES_PASSWORD: 2010665KE
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -44,10 +44,10 @@ jobs:
     - name: Run Tests
       env:
         SECRET_KEY: g^iuexa=!fva713-*(sk6^x&hi@d=lb!uiu*zc5xt!e#t_&qvo
-        PROD: True
-        DB_NAME: TESTDB
-        DB_USER: postgres
-        DB_PASSWORD: 123456789
+        PROD: "True"
+        DB_NAME: WORKDB
+        DB_USER: ROOT
+        DB_PASSWORD: 2010665KE
         DB_HOST: localhost
       run: |
         cd server/
