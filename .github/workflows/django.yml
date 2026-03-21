@@ -27,6 +27,8 @@ jobs:
         cd server/
         pip install -r requirements.txt
     - name: Run Tests
+      env:
+        SECRET_KEY: g^iuexa=!fva713-*(sk6^x&hi@d=lb!uiu*zc5xt!e#t_&qvo
       run: |
         cd server/
         python manage.py test
