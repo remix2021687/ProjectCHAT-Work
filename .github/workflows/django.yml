@@ -20,7 +20,7 @@ jobs:
         image: postgres:16
         env:
           POSTGRES_DB: TESTDB
-          POSTGRES_USER: ROOT
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: 123456789
         options: >-
           --health-cmd pg_isready
@@ -46,7 +46,7 @@ jobs:
         SECRET_KEY: g^iuexa=!fva713-*(sk6^x&hi@d=lb!uiu*zc5xt!e#t_&qvo
         PROD: True
         DB_NAME: TESTDB
-        DB_USER: ROOT
+        DB_USER: postgres
         DB_PASSWORD: 123456789
         DB_HOST: localhost
       run: |
