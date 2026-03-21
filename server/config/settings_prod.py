@@ -15,4 +15,4 @@ DATABASES = {
     }
 }
 
-CORS_ALLOWED_ORIGINS = f"{os.environ.get('CORS_ALLOWED_ORIGINS', ['http://localhost:5173'])}"
+CORS_ALLOWED_ORIGINS = f"{os.environ.get('CORS_ALLOWED_ORIGINS')}"
