@@ -187,7 +187,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'uploads'
 ]
 
-if os.getenv("PROD") == True:
+if os.getenv("PROD") == "True":
     from .settings_prod import *
 else:
     from .settings_local import *
