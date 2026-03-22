@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { api } from "./Api/ApiSlice";
-import NotifyMenuReducer from "./Slices/NotifyMenuSlice";
+import MobileMenuSlice from "./Slices/MobileMenuSlice";
 import EmailVerifySlice from "./Api/EmailVerifySlice";
 
 export const store = configureStore({
 	reducer: {
-		notifymenu: NotifyMenuReducer,
+		mobilemenu: MobileMenuSlice,
 		emailverify: EmailVerifySlice,
 		[api.reducerPath]: api.reducer,
 	},
