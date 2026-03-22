@@ -105,3 +105,47 @@ class UserViewSetTests(APITestCase):
         response = self.client.post(self.login_url, data)
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_verify_email_success(self):
+        user = CustomUser.objects.create_user(
+            first_name='Test',
+            last_name='User',
+            email="test@gmail.com",
+            username='test',
+            password="2010665KE"
+        )
+
+        user.email_verification_code = "123456"
+        user.save()
+
+        data = {
+            "email": "test@gmail.com",
+            "email_verification_code": "123456"
+        }
+
+        response = self.client.post(self.verify_url, data)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        user.refresh_from_db()
+        self.assertTrue(user.is_email_verified)
+
+    def test_verify_email_fail(self):
+        user = CustomUser.objects.create_user(
+            first_name='Test',
+            last_name='User',
+            email="test@gmail.com",
+            username='test',
+            password="2010665KE"
+        )
+
+        user.email_verification_code = "123456"
+        user.save()
+
+        data = {
+            "email": "test@gmail.com",
+            "email_verification_code": "855789"
+        }
+
+        response = self.client.post(self.verify_url, data)
+
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
