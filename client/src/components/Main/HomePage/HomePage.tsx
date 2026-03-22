@@ -1,8 +1,9 @@
-
+import { useEffect } from "react";
 
 export const HomePage: React.FC = () => {
-    return (
-        <section className="HomePage">
-        </section>
-    )
-}
+	useEffect(() => {
+		document.title = "Paradox | Home";
+	}, []);
+
+	return <section className="HomePage"></section>;
+};
