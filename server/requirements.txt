@@ -26,7 +26,7 @@ py-ubjson==0.16.1
 pyasn1==0.6.2
 pyasn1_modules==0.4.2
 pycparser==2.23
-PyJWT==2.10.1
+PyJWT==2.12.0
 pyOpenSSL==25.3.0
 python-dotenv==1.2.1
 requests==2.32.5
