@@ -1,4 +1,4 @@
-# ProjectCHAT-Work DEV
+# ParadoxCHAT-Work DEV
 На данный момент проект не готов. Но в скором временни будет **Discord**. Для того чтобы следили за развитием проекта.
 
 YouTube + Instagram в одном приложении **Paradox** (Django Channels + React).
