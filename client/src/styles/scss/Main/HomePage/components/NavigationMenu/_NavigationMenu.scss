@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 24px;
-	width: 20%;
+	width: 25%;
 	height: 40%;
 	border-radius: 12px;
 	background-color: rgba(38, 25, 51, 0.3);
@@ -36,16 +36,11 @@
 		button {
 			position: relative;
 			width: 100%;
-			height: 36px;
+			height: 50px;
 			background: none;
 			padding: 0 12px;
-			border-radius: 8px;
-			overflow: hidden;
 			border: none;
 			text-align: start;
-			font-size: 18px;
-			color: white;
-			font-weight: bold;
 			cursor: pointer;
 
 			section {
@@ -55,6 +50,13 @@
 				gap: 12px;
 				position: relative;
 				z-index: 1;
+
+				span {
+					font-size: 18px;
+					color: white;
+					font-weight: bold;
+					transition: 0.5s ease;
+				}
 			}
 
 			.NavigationMenu_buttons_indecator {
@@ -62,6 +64,7 @@
 				top: 0;
 				left: 0;
 				background-color: #7f13ec;
+				border-radius: 8px;
 				width: 100%;
 				height: 100%;
 			}

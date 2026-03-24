@@ -292,7 +292,7 @@ body {
   width: 100%;
   height: 100vh;
   position: absolute;
-  top: 0;
+  top: -100%;
   left: 0;
   z-index: 999;
   background-color: #261933;
@@ -463,10 +463,21 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  gap: 32px;
   width: 100%;
   height: 100vh;
   padding: 20px 40px;
   background-color: #191022;
+}
+.HomePage .HomePage_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
 }
 
 .NavigationMenu {
@@ -478,7 +489,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 24px;
-  width: 20%;
+  width: 25%;
   height: 40%;
   border-radius: 12px;
   background-color: rgba(38, 25, 51, 0.3);
@@ -521,16 +532,11 @@ body {
 .NavigationMenu .NavigationMenu_buttons button {
   position: relative;
   width: 100%;
-  height: 36px;
+  height: 50px;
   background: none;
   padding: 0 12px;
-  border-radius: 8px;
-  overflow: hidden;
   border: none;
   text-align: start;
-  font-size: 18px;
-  color: white;
-  font-weight: bold;
   cursor: pointer;
 }
 .NavigationMenu .NavigationMenu_buttons button section {
@@ -548,13 +554,106 @@ body {
   position: relative;
   z-index: 1;
 }
+.NavigationMenu .NavigationMenu_buttons button section span {
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
 .NavigationMenu .NavigationMenu_buttons button .NavigationMenu_buttons_indecator {
   position: absolute;
   top: 0;
   left: 0;
   background-color: #7f13ec;
+  border-radius: 8px;
   width: 100%;
   height: 100%;
+}
+
+.PostMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+.PostMenu .PostMenu_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 5px;
+}
+.PostMenu .PostMenu_header h1 {
+  font-weight: bold;
+  color: white;
+}
+.PostMenu .PostMenu_header p {
+  color: #ad92c9;
+}
+.PostMenu .PostMenu_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 80%;
+  padding: 25px 0;
+  background-color: #261933;
+  border-radius: 12px;
+  border: 1px solid #4d3267;
+}
+.PostMenu .PostMenu_form .PostMenu_form_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 12px;
+  width: 98%;
+}
+.PostMenu .PostMenu_form .PostMenu_form_content textarea {
+  width: 100%;
+  height: 100px;
+  resize: none;
+  border: none;
+  background-color: rgba(25, 16, 34, 0.5);
+  padding: 12px;
+  border-radius: 12px;
+  color: #69458c;
+  font-weight: bold;
+  outline: none;
+}
+.PostMenu .PostMenu_form .PostMenu_form_content button {
+  width: 15%;
+  height: 50px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  background-color: #7f13ec;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
 }
 
 .AuthPage {
