@@ -29,7 +29,7 @@ pycparser==3.0
 PyJWT==2.12.1
 pyOpenSSL==26.0.0
 python-dotenv==1.2.2
-requests==2.32.5
+requests==2.33.0
 service-identity==24.2.0
 sqlparse==0.5.5
 Twisted==25.5.0
