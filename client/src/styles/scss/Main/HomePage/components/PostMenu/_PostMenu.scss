@@ -58,6 +58,12 @@
 					color: #69458c;
 					font-weight: bold;
 					outline: none;
+
+					&:focus {
+						&::placeholder {
+							opacity: 0;
+						}
+					}
 				}
 			}
 

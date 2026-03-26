@@ -59,17 +59,19 @@
 				flex-direction: row;
 				gap: 24px;
 
-				section {
+				button {
 					display: flex;
 					flex-direction: row;
 					align-items: center;
 					justify-content: center;
+					border-radius: 12px;
+					padding: 5px;
+					border: none;
+					background: none;
+					font-weight: 400;
+					color: #ad92c9;
 					gap: 5px;
-
-					h4 {
-						font-weight: 400;
-						color: #ad92c9;
-					}
+					cursor: pointer;
 				}
 			}
 
@@ -86,6 +88,11 @@
 				color: white;
 				font-size: 18px;
 				font-weight: bold;
+				transition: 0.3s ease;
+
+				&:hover {
+					background-color: #6501c9;
+				}
 			}
 		}
 	}

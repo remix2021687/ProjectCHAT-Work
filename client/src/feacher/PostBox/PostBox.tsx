@@ -1,5 +1,6 @@
 import { HeartIcon, ChatIcon } from "@phosphor-icons/react";
 import { NavLink } from "react-router";
+import { motion } from "motion/react";
 
 export type PostBoxProps = {
 	id?: string;
@@ -48,17 +49,23 @@ export const PostBox: React.FC<PostBoxProps> = ({
 				<hr />
 				<section className='PostBox_footer'>
 					<section className='PostBox_footer_left'>
-						<section>
+						<motion.button
+							whileHover={{
+								backgroundColor: "#94a3b86d",
+							}}>
 							{is_liked ? (
 								<HeartIcon size={30} fill='red' weight='fill' />
 							) : (
 								<HeartIcon size={30} color='#AD92C9' />
 							)}
-							<h4>{like_count}</h4>
-						</section>
-						<section>
+							{like_count}
+						</motion.button>
+						<motion.button
+							whileHover={{
+								backgroundColor: "#94a3b86d",
+							}}>
 							<ChatIcon size={30} color='#AD92C9' />
-						</section>
+						</motion.button>
 					</section>
 					<NavLink to={"/"}>Watch Now</NavLink>
 				</section>

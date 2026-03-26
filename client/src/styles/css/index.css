@@ -673,6 +673,21 @@ body {
   font-weight: bold;
   outline: none;
 }
+.PostMenu .PostMenu_form .PostMenu_form_content .PostMenu_form_content_upper textarea:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+.PostMenu .PostMenu_form .PostMenu_form_content .PostMenu_form_content_upper textarea:focus::-moz-placeholder {
+  opacity: 0;
+}
+.PostMenu .PostMenu_form .PostMenu_form_content .PostMenu_form_content_upper textarea:focus:-ms-input-placeholder {
+  opacity: 0;
+}
+.PostMenu .PostMenu_form .PostMenu_form_content .PostMenu_form_content_upper textarea:focus::-ms-input-placeholder {
+  opacity: 0;
+}
+.PostMenu .PostMenu_form .PostMenu_form_content .PostMenu_form_content_upper textarea:focus::placeholder {
+  opacity: 0;
+}
 .PostMenu .PostMenu_form .PostMenu_form_content .PostMenu_form_content_lower {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1398,7 +1413,7 @@ body {
           flex-direction: row;
   gap: 24px;
 }
-.PostBox .PostBox_content .PostBox_footer .PostBox_footer_left section {
+.PostBox .PostBox_content .PostBox_footer .PostBox_footer_left button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1412,11 +1427,14 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  gap: 5px;
-}
-.PostBox .PostBox_content .PostBox_footer .PostBox_footer_left section h4 {
+  border-radius: 12px;
+  padding: 5px;
+  border: none;
+  background: none;
   font-weight: 400;
   color: #ad92c9;
+  gap: 5px;
+  cursor: pointer;
 }
 .PostBox .PostBox_content .PostBox_footer a {
   display: -webkit-box;
@@ -1440,6 +1458,11 @@ body {
   color: white;
   font-size: 18px;
   font-weight: bold;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.PostBox .PostBox_content .PostBox_footer a:hover {
+  background-color: #6501c9;
 }
 
 @media screen and (max-width: 1200px) {
