@@ -29,18 +29,12 @@ export const PostBox: React.FC<PostBoxProps> = ({
 	created_at,
 }) => {
 	return (
-		<section className="PostBox">
-			<img
-				src={media_content}
-				alt="media"
-			/>
+		<section className='PostBox'>
+			<img src={media_content} alt='media' />
 
-			<section className="PostBox_content">
-				<section className="PostBox_header">
-					<img
-						src={user.avatar}
-						alt="avatar"
-					/>
+			<section className='PostBox_content'>
+				<section className='PostBox_header'>
+					<img src={user.avatar} alt='avatar' />
 					<section>
 						<h2>
 							{user.first_name} {user.last_name}
@@ -53,23 +47,16 @@ export const PostBox: React.FC<PostBoxProps> = ({
 				<h1>{title}</h1>
 				<p>{content}</p>
 				<hr />
-				<section className="PostBox_footer">
-					<section className="PostBox_footer_left">
+				<section className='PostBox_footer'>
+					<section className='PostBox_footer_left'>
 						<motion.button
 							whileHover={{
 								backgroundColor: "#94a3b86d",
 							}}>
 							{is_liked ? (
-								<HeartIcon
-									size={30}
-									fill="#7F13EC"
-									weight="fill"
-								/>
+								<HeartIcon size={30} fill='#7F13EC' weight='fill' />
 							) : (
-								<HeartIcon
-									size={30}
-									color="#AD92C9"
-								/>
+								<HeartIcon size={30} color='#AD92C9' />
 							)}
 							{like_count}
 						</motion.button>
@@ -77,13 +64,10 @@ export const PostBox: React.FC<PostBoxProps> = ({
 							whileHover={{
 								backgroundColor: "#94a3b86d",
 							}}>
-							<ChatIcon
-								size={30}
-								color="#AD92C9"
-							/>
+							<ChatIcon size={30} color='#AD92C9' />
 						</motion.button>
 					</section>
-					<NavLink to={"/"}>Watch Now</NavLink>
+					<NavLink to={"post/123"}>Watch Now</NavLink>
 				</section>
 			</section>
 		</section>

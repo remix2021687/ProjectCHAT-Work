@@ -856,6 +856,22 @@ body {
   gap: 20px;
 }
 
+@media screen and (max-width: 792px) {
+  .HomePage {
+    -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+            align-items: center !important;
+  }
+  .HomePage .NavigationMenu {
+    display: none;
+  }
+  .HomePage .HomePage_left {
+    display: none !important;
+  }
+  .HomePage .HomePage_content {
+    width: 100%;
+  }
+}
 .AuthPage {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1456,7 +1472,7 @@ body {
   background-color: #7f13ec;
   border-radius: 12px;
   color: white;
-  font-size: 18px;
+  font-size: clamp(8px, 2vw, 18px);
   font-weight: bold;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;

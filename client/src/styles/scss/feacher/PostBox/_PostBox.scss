@@ -86,7 +86,7 @@
 				background-color: #7f13ec;
 				border-radius: 12px;
 				color: white;
-				font-size: 18px;
+				font-size: clamp(8px, 2vw, 18px);
 				font-weight: bold;
 				transition: 0.3s ease;
 
