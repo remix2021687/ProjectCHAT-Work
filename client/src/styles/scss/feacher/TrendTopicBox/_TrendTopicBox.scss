@@ -1,0 +1,16 @@
+.TrendTopic {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	h2 {
+		font-size: 16px;
+		font-weight: bold;
+		color: white;
+	}
+
+	h4 {
+		font-size: 14px;
+		color: #ad92c9;
+	}
+}

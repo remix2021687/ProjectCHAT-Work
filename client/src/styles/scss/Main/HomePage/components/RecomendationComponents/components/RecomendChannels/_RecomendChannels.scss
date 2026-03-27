@@ -1,0 +1,34 @@
+.RecomendChannels {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 16px;
+	width: 100%;
+	border: 1px solid #4d3267;
+	border-radius: 12px;
+	background-color: #261933;
+	padding: 20px;
+
+	.RecomendChannels_header {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+
+		h2 {
+			font-weight: bold;
+			color: white;
+		}
+
+		a {
+			color: #7f13ec;
+		}
+	}
+
+	.RecomendChannels_content {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+}

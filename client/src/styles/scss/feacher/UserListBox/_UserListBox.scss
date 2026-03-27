@@ -1,0 +1,39 @@
+.UserListBox {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+
+	.UserListBox_info {
+		display: flex;
+		flex-direction: row;
+		gap: 16px;
+		width: 100%;
+
+		.UserListBox_info_header {
+			display: flex;
+			flex-direction: column;
+
+			h4 {
+				font-weight: bold;
+				color: white;
+			}
+
+			h5 {
+				color: #ad92c9;
+			}
+		}
+	}
+
+	button {
+		width: fit-content;
+		height: fit-content;
+		padding: 6px 12px;
+		background-color: rgba(127, 19, 236, 0.3);
+		border: none;
+		border-radius: 8px;
+		font-weight: bold;
+		color: white;
+		cursor: pointer;
+	}
+}

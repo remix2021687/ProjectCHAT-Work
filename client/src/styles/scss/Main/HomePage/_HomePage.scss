@@ -1,7 +1,28 @@
 .HomePage {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	gap: 32px;
+	width: 100%;
+	padding: 20px 40px;
+	background-color: #191022;
+
+	.HomePage_content {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		width: 70%;
+	}
+
+	.HomePage_left {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		width: 30%;
+	}
 }
 
-@import "./components/HomePageUserList/HomePageUserList";
+@import "./components/NavigationMenu/NavigationMenu";
+@import "./components/PostMenu/PostMenu";
+@import "./components/RecomendationComponents/RecomendationComponents";
+@import "./HomePageAdaptiv";

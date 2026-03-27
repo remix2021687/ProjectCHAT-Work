@@ -1,0 +1,16 @@
+@media screen and (max-width: 792px) {
+	.HomePage {
+		align-items: center !important;
+		.NavigationMenu {
+			display: none;
+		}
+
+		.HomePage_left {
+			display: none !important;
+		}
+
+		.HomePage_content {
+			width: 100%;
+		}
+	}
+}

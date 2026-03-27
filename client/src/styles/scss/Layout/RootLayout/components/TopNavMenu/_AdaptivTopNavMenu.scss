@@ -1,0 +1,18 @@
+@media screen and (max-width: 792px) {
+	.TopNavMenu {
+		.TopNavMenu_open_mobile_menu_button {
+			display: flex !important;
+		}
+		.TopNavMenu_left_block {
+			width: 100%;
+
+			.TopNavMenu_left_block_search {
+				display: none;
+			}
+		}
+
+		.TopNavMenu_right_block {
+			display: none;
+		}
+	}
+}
