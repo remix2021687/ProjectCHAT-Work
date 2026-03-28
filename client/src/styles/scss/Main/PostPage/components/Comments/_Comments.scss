@@ -1,0 +1,83 @@
+.Comments {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 24px;
+	background-color: #1d1428;
+	border: 1px solid #3d2a52;
+	border-radius: 16px;
+
+	hr {
+		color: #3d2a52;
+	}
+
+	.Comments_header {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+
+		h1 {
+			display: flex;
+			flex-direction: row;
+			align-content: center;
+			justify-content: center;
+			gap: 8px;
+			font-size: 20px;
+			color: white;
+
+			span {
+				font-size: 16px;
+				font-weight: 400;
+			}
+		}
+	}
+
+	.Comments_form {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		gap: 16px;
+
+		img {
+			object-fit: contain;
+			width: 8%;
+		}
+
+		label {
+			display: flex;
+			flex-direction: row;
+			gap: 16px;
+			width: 100%;
+			padding: 17px 13px;
+			justify-content: space-between;
+			background-color: #120b1a;
+			border: 1px solid #3d2a52;
+			border-radius: 12px;
+
+			textarea {
+				width: 100%;
+				height: 96px;
+				outline: none;
+				resize: none;
+				background: none;
+				border: none;
+				color: #ad92c9;
+				font-weight: 600;
+			}
+
+			button {
+				width: 15%;
+				height: 40px;
+				color: #ffffff;
+				font-size: 16px;
+				font-weight: bold;
+				background-color: #7f13ec;
+				border: none;
+				border-radius: 8px;
+				align-self: flex-end;
+				cursor: pointer;
+			}
+		}
+	}
+}

@@ -1,21 +1,29 @@
 import { NavLink } from "react-router";
-import { SealCheckIcon } from "@phosphor-icons/react";
+import { ArrowLeftIcon } from "@phosphor-icons/react";
 import { VideoPlayer } from "./components/VideoPlayer/VideoPlayer";
-import video from "@assets/video/282086.mp4";
-import avatar from "@assets/img/avatar.png";
 import { PostInfo } from "./components/PostInfo/PostInfo";
+import video from "@assets/video/331030.mp4";
+import { Comments } from "./components/Comments/Comments";
 
 export const PostPage: React.FC = () => {
 	return (
-		<section className='PostPage'>
-			<NavLink to={"/"}>Back to Feed</NavLink>
-			<section className='PostPage_content'>
-				<section className='PostPage_content_videoPlayer'>
+		<section className="PostPage">
+			<NavLink to={"/"}>
+				<ArrowLeftIcon
+					size={18}
+					color="#AD92C9"
+					weight="bold"
+				/>
+				Back to Feed
+			</NavLink>
+			<section className="PostPage_content">
+				<section className="PostPage_content_videoPlayer">
 					<VideoPlayer src={video} />
 				</section>
 				<PostInfo />
+				<Comments />
 			</section>
-			<NavLink to={"/"}>Back to Feed</NavLink>
+			<section></section>
 		</section>
 	);
 };

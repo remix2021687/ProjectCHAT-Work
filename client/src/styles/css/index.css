@@ -880,13 +880,34 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 24px;
   background-color: #120b1a;
   width: 100%;
-  height: 100vh;
   padding: 20px;
+}
+.PostPage a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 12px;
+  width: 15%;
+  height: 40px;
+  background-color: #261933;
+  padding: 12px;
+  border-radius: 8px;
+  color: #ad92c9;
+  font-size: 14px;
+  font-weight: bold;
 }
 .PostPage .PostPage_content {
   display: -webkit-box;
@@ -1023,10 +1044,126 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   gap: 5px;
+  padding: 10px;
+  border-radius: 16px;
+  cursor: pointer;
 }
 .PostInfo .PostInfo_footer section span {
   color: #ad92c9;
   font-weight: bold;
+}
+
+.Comments {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background-color: #1d1428;
+  border: 1px solid #3d2a52;
+  border-radius: 16px;
+}
+.Comments hr {
+  color: #3d2a52;
+}
+.Comments .Comments_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.Comments .Comments_header h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 8px;
+  font-size: 20px;
+  color: white;
+}
+.Comments .Comments_header h1 span {
+  font-size: 16px;
+  font-weight: 400;
+}
+.Comments .Comments_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 16px;
+}
+.Comments .Comments_form img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 8%;
+}
+.Comments .Comments_form label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 16px;
+  width: 100%;
+  padding: 17px 13px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #120b1a;
+  border: 1px solid #3d2a52;
+  border-radius: 12px;
+}
+.Comments .Comments_form label textarea {
+  width: 100%;
+  height: 96px;
+  outline: none;
+  resize: none;
+  background: none;
+  border: none;
+  color: #ad92c9;
+  font-weight: 600;
+}
+.Comments .Comments_form label button {
+  width: 15%;
+  height: 40px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #7f13ec;
+  border: none;
+  border-radius: 8px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  cursor: pointer;
 }
 
 .AuthPage {
