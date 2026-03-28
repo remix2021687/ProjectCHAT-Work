@@ -1165,6 +1165,16 @@ body {
       align-self: flex-end;
   cursor: pointer;
 }
+.Comments .Comments_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 32px;
+}
 
 .AuthPage {
   display: -webkit-box;
@@ -1773,6 +1783,122 @@ body {
 }
 .PostBox .PostBox_content .PostBox_footer a:hover {
   background-color: #6501c9;
+}
+
+.CommentBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 16px;
+}
+.CommentBox img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.CommentBox .CommentBox_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 6px;
+}
+.CommentBox .CommentBox_content .CommentBox_content_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+}
+.CommentBox .CommentBox_content .CommentBox_content_header h1 {
+  font-size: 18px;
+  color: white;
+}
+.CommentBox .CommentBox_content .CommentBox_content_header span {
+  font-size: 14px;
+  color: #ad92c9;
+  text-transform: uppercase;
+}
+.CommentBox .CommentBox_content .CommentBox_content_text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 11px;
+  border-radius: 16px;
+  border-top-left-radius: 0;
+  border: 1px solid rgba(127, 19, 236, 0.2);
+  background-color: rgba(127, 19, 236, 0.05);
+}
+.CommentBox .CommentBox_content .CommentBox_content_text p {
+  color: white;
+  word-break: inherit;
+}
+.CommentBox .CommentBox_content .CommentBox_content_footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 32px;
+}
+.CommentBox .CommentBox_content .CommentBox_content_footer section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 4px;
+}
+.CommentBox .CommentBox_content .CommentBox_content_footer section span {
+  font-size: 12px;
+  color: #ad92c9;
+  font-weight: bold;
+}
+.CommentBox .CommentBox_content .CommentBox_content_footer button {
+  border: none;
+  background: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  color: #7f13ec;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1200px) {
