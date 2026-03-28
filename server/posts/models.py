@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 
+
 class Post(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     photo = models.ImageField(upload_to="posts/photos", blank=True)
@@ -21,8 +22,12 @@ class Post(models.Model):
             return False
         return self.likes.filter(id=user.id).exists()
 
+    def comments_count(self):
+        return self.comments.count()
+
     def __str__(self):
         return f'{self.title} | {self.user.username}'
+
 
 class Comment(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -42,7 +47,5 @@ class Comment(models.Model):
             return False
         return self.likes.filter(id=user.id).exists()
 
-
     def __str__(self):
         return f'Comment by {self.user.username} on {self.post.title}'
-
