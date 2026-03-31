@@ -1,4 +1,5 @@
 import { UserIcon } from "@phosphor-icons/react";
+import { NavLink } from "react-router";
 import { motion } from "motion/react";
 
 export const ProfileBox: React.FC = () => {
@@ -9,11 +10,13 @@ export const ProfileBox: React.FC = () => {
 				backgroundColor: "#4d3267",
 				borderRadius: "30%",
 			}}>
-			<UserIcon
-				size={18}
-				color="white"
-				weight="bold"
-			/>
+			<NavLink to={"profile/132"}>
+				<UserIcon
+					size={18}
+					color="white"
+					weight="bold"
+				/>
+			</NavLink>
 		</motion.section>
 	);
 };

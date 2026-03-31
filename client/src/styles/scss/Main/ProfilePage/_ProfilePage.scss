@@ -1,0 +1,16 @@
+.ProfilePage {
+	display: flex;
+	flex-direction: column;
+	background-color: #261b2e;
+	padding-bottom: 80px;
+	width: 100%;
+
+	.ProfilePage_header {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+}
+
+@import "./components/ProfilePonorama/ProfilePonorama";
+@import "./components/ProfileInfo/ProfileInfo";

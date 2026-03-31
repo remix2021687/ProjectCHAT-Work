@@ -1466,6 +1466,68 @@ body {
   color: #94a3b8;
 }
 
+.ProfilePage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #261b2e;
+  padding-bottom: 80px;
+  width: 100%;
+}
+.ProfilePage .ProfilePage_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.ProfilePonorama {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+.ProfilePonorama img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.ProfilePonorama button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 8px;
+  position: absolute;
+  top: 90%;
+  left: 91.5%;
+  width: 8%;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(25, 16, 34, 0.6);
+  color: white;
+  cursor: pointer;
+}
+
 .VerifyPage {
   display: -webkit-box;
   display: -ms-flexbox;
