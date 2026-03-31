@@ -67,7 +67,7 @@ export const PostBox: React.FC<PostBoxProps> = ({
 							<ChatIcon size={30} color='#AD92C9' />
 						</motion.button>
 					</section>
-					<NavLink to={"post/123"}>Watch Now</NavLink>
+					<NavLink to={"/post/123/"}>Watch Now</NavLink>
 				</section>
 			</section>
 		</section>
