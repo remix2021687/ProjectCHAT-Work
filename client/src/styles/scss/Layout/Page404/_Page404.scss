@@ -4,8 +4,26 @@
 	align-items: center;
 	justify-content: center;
 	padding: 50px 0;
-	height: 100vh;
 	background-color: #261933;
+
+	.Page404_Logo {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+		width: 100%;
+
+		img {
+			width: 5%;
+			object-fit: cover;
+		}
+
+		h1 {
+			font-size: 50px;
+			color: white;
+		}
+	}
 
 	.Page404_header {
 		display: flex;
@@ -93,5 +111,15 @@
 			border-radius: 12px;
 			box-shadow: 0px 10px 15px -3px rgba($color: #7f13ec, $alpha: 0.3);
 		}
+
+		.Page404_footer_info {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			width: 50%;
+		}
 	}
 }
+
+@import "./components/Page404InfoBox/Page404InfoBox";
