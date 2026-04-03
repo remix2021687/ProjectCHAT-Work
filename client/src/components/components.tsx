@@ -4,6 +4,8 @@ import { HomePage } from "./Main/HomePage/HomePage";
 import { AuthPage } from "./Main/AuthPage/AuthPage";
 import { VerifyPage } from "./Main/VerifyPage/VerifyPage";
 import { PostPage } from "./Main/PostPage/PostPage";
+import { ProfilePage } from "./Main/ProfilePage/ProfilePage";
+import { Page404 } from "./Layout/Page404/Page404";
 
 export const components: Record<string, React.ComponentType<any>> = {
 	RootLayout,
@@ -11,4 +13,6 @@ export const components: Record<string, React.ComponentType<any>> = {
 	PostPage,
 	AuthPage,
 	VerifyPage,
+	ProfilePage,
+	Page404,
 };

@@ -273,6 +273,23 @@ body {
   border: 1px solid #4d3267;
   cursor: pointer;
 }
+.ProfileBox a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100%;
+}
 
 .MobileMenu {
   display: -webkit-box;
@@ -452,6 +469,238 @@ body {
     display: none;
   }
 }
+.Page404 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 50px 0;
+  background-color: #261933;
+}
+.Page404 .Page404_Logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+.Page404 .Page404_Logo img {
+  width: 5%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.Page404 .Page404_Logo h1 {
+  font-size: 50px;
+  color: white;
+}
+.Page404 .Page404_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 180px;
+}
+.Page404 .Page404_header > h1 {
+  text-align: center;
+  font-size: 224px;
+  color: white;
+  letter-spacing: -30px;
+}
+.Page404 .Page404_header > h1 #num_0 {
+  color: #7f13ec;
+  text-shadow: 4px 4px 100px rgb(127, 19, 236);
+}
+.Page404 .Page404_header .Page404_header_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+.Page404 .Page404_header .Page404_header_content .Page404_header_content_box_1,
+.Page404 .Page404_header .Page404_header_content .Page404_header_content_box_2,
+.Page404 .Page404_header .Page404_header_content .Page404_header_content_box_3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  width: 288px;
+  height: 288px;
+  border-radius: 32px;
+}
+.Page404 .Page404_header .Page404_header_content .Page404_header_content_box_1 {
+  z-index: 1;
+  background-color: #322244;
+  border: 1px solid rgba(77, 50, 103, 0.3);
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+}
+.Page404 .Page404_header .Page404_header_content .Page404_header_content_box_2 {
+  z-index: 2;
+  background-color: #261933;
+  border: 1px solid rgba(77, 50, 103, 0.3);
+  -webkit-transform: rotateZ(-15deg);
+          transform: rotateZ(-15deg);
+}
+.Page404 .Page404_header .Page404_header_content .Page404_header_content_box_3 {
+  z-index: 3;
+}
+.Page404 .Page404_header .Page404_header_content .Page404_header_content_box_3 h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ad92c9;
+}
+.Page404 .Page404_footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 48px;
+  width: 100%;
+  margin-top: 50px;
+}
+.Page404 .Page404_footer a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  gap: 3px;
+  width: 80%;
+  height: 82px;
+  background-color: #7f13ec;
+  border-radius: 12px;
+  -webkit-box-shadow: 0px 10px 15px -3px rgba(127, 19, 236, 0.3);
+          box-shadow: 0px 10px 15px -3px rgba(127, 19, 236, 0.3);
+}
+.Page404 .Page404_footer .Page404_footer_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 18px;
+  width: 100%;
+}
+
+.Page404InfoBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 18px;
+  width: 100%;
+  height: 162px;
+  padding: 20px;
+  background-color: #1e132b;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(77, 50, 103, 0.1);
+}
+.Page404InfoBox .Page404InfoBox_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 8px;
+}
+.Page404InfoBox .Page404InfoBox_content h2 {
+  font-size: 16px;
+  color: white;
+}
+.Page404InfoBox .Page404InfoBox_content p {
+  font-size: 14px;
+  color: #ad92c9;
+  max-width: 80%;
+}
+
 .HomePage {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1464,6 +1713,299 @@ body {
 .LoginForm .LoginForm_title p {
   font-size: 16px;
   color: #94a3b8;
+}
+
+.ProfilePage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #261b2e;
+  padding-bottom: 80px;
+  width: 100%;
+}
+.ProfilePage .ProfilePage_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.ProfilePonorama {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+.ProfilePonorama img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.ProfilePonorama button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 8px;
+  position: absolute;
+  top: 90%;
+  left: 91.5%;
+  width: 8%;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(25, 16, 34, 0.6);
+  color: white;
+  cursor: pointer;
+}
+
+.ProfileInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+.ProfileInfo .ProfileInfo_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 80%;
+}
+.ProfileInfo .ProfileInfo_content_right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 60%;
+}
+.ProfileInfo .ProfileInfo_content_right .Profile_content_right_nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 32px;
+  height: 53px;
+  width: 100%;
+  border-bottom: 1px solid #4d3267;
+}
+.ProfileInfo .ProfileInfo_content_right .Profile_content_right_nav button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5px;
+  position: relative;
+  padding: 0 13px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.ProfileInfo .ProfileInfo_content_right .Profile_content_right_nav button .icon {
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.ProfileInfo .ProfileInfo_content_right .Profile_content_right_nav button span {
+  width: 75%;
+  height: 3px;
+  background-color: #7f13ec;
+  position: absolute;
+  top: 96%;
+}
+
+.ProfileInfo_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+  top: -60px;
+  width: 80%;
+}
+.ProfileInfo_header .ProfileInfo_header_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 24px;
+}
+.ProfileInfo_header .ProfileInfo_header_info .ProfileInfo_header_info_avatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+.ProfileInfo_header .ProfileInfo_header_info .ProfileInfo_header_info_avatar img {
+  width: 160px;
+  height: 160px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 2px solid #191022;
+  border-radius: 50%;
+}
+.ProfileInfo_header .ProfileInfo_header_info .ProfileInfo_header_info_avatar section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  top: 81%;
+  left: 72%;
+  width: 30px;
+  height: 30px;
+  background-color: #7f13ec;
+  border: 2px solid #191022;
+  border-radius: 50%;
+}
+.ProfileInfo_header .ProfileInfo_header_info > section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 8px;
+}
+.ProfileInfo_header .ProfileInfo_header_info > section h1 {
+  font-size: 30px;
+  color: white;
+}
+.ProfileInfo_header .ProfileInfo_header_info > section h3 {
+  font-size: 18px;
+  color: #ad92c9;
+}
+.ProfileInfo_header .ProfileInfo_header_info > section span {
+  color: rgba(255, 255, 255, 0.7);
+}
+.ProfileInfo_header .ProfileInfo_header_buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 18px;
+  width: 25%;
+}
+.ProfileInfo_header .ProfileInfo_header_buttons #EditPofile,
+.ProfileInfo_header .ProfileInfo_header_buttons #ShareProfile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 8px;
+  gap: 5px;
+  width: 100%;
+  height: 60px;
+  cursor: pointer;
+  border: none;
+  padding: 20px;
+}
+.ProfileInfo_header .ProfileInfo_header_buttons #EditPofile {
+  background-color: #362348;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+.ProfileInfo_header .ProfileInfo_header_buttons #ShareProfile {
+  background-color: #7f13ec;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
 }
 
 .VerifyPage {

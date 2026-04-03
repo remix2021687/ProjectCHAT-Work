@@ -1,0 +1,103 @@
+.ProfileInfo_header {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: space-between;
+	position: relative;
+	top: -60px;
+	width: 80%;
+
+	.ProfileInfo_header_info {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 24px;
+
+		.ProfileInfo_header_info_avatar {
+			display: flex;
+			flex-direction: column;
+			position: relative;
+
+			img {
+				width: 160px;
+				height: 160px;
+				object-fit: cover;
+				border: 2px solid #191022;
+				border-radius: 50%;
+			}
+
+			section {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				position: absolute;
+				top: 81%;
+				left: 72%;
+				width: 30px;
+				height: 30px;
+				background-color: #7f13ec;
+				border: 2px solid #191022;
+				border-radius: 50%;
+			}
+		}
+
+		& > section {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+
+			h1 {
+				font-size: 30px;
+				color: white;
+			}
+
+			h3 {
+				font-size: 18px;
+				color: #ad92c9;
+			}
+
+			span {
+				color: rgba($color: #ffffff, $alpha: 0.7);
+			}
+		}
+	}
+
+	.ProfileInfo_header_buttons {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 18px;
+		width: 25%;
+
+		#EditPofile,
+		#ShareProfile {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			border-radius: 8px;
+			gap: 5px;
+			width: 100%;
+			height: 60px;
+			cursor: pointer;
+			border: none;
+			padding: 20px;
+		}
+
+		#EditPofile {
+			background-color: #362348;
+			font-size: 18px;
+			font-weight: bold;
+			color: white;
+		}
+
+		#ShareProfile {
+			background-color: #7f13ec;
+			font-size: 18px;
+			font-weight: bold;
+			color: white;
+		}
+	}
+}

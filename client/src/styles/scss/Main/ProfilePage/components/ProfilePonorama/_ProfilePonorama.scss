@@ -1,0 +1,28 @@
+.ProfilePonorama {
+	display: flex;
+	width: 100%;
+	position: relative;
+
+	img {
+		width: 100%;
+		object-fit: cover;
+	}
+
+	button {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		position: absolute;
+		top: 90%;
+		left: 91.5%;
+		width: 8%;
+		height: 34px;
+		border-radius: 8px;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		background-color: rgba(25, 16, 34, 0.6);
+		color: white;
+		cursor: pointer;
+	}
+}

@@ -4,6 +4,7 @@ import MobileMenuSlice from "./Slices/MobileMenuSlice";
 import NavigationMenuSlice from "./Slices/NavigationMenuSlice";
 import EmailVerifySlice from "./Api/EmailVerifySlice";
 import AuthSlice from "./Api/AuthSlice";
+import ProfileNavMenuSlice from "./Slices/ProfileNavMenuSlice";
 
 export const store = configureStore({
 	reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
 		navigationmenu: NavigationMenuSlice,
 		emailverify: EmailVerifySlice,
 		auth: AuthSlice,
+		profilenavmenu: ProfileNavMenuSlice,
 		[api.reducerPath]: api.reducer,
 	},
 	middleware: (getDefultMiddleware) =>
