@@ -2,12 +2,18 @@ import {
 	ProfilePostBox,
 	type ProfilePostBoxProps,
 } from "@feacher/ProfilePostBox/ProfilePostBox";
+import { useEffect } from "react";
 import { ProfileInfo } from "./components/ProfileInfo/ProfileInfo";
 import { ProfilePonorama } from "./components/ProfilePonorama/ProfilePonorama";
 import bg from "@assets/img/Background.png";
 import { ProfileStateBox } from "./components/ProfileStateBox/ProfileStateBox";
+import { ProfileConnect } from "./components/ProfileConnect/ProfileConnect";
 
 export const ProfilePage: React.FC = () => {
+	useEffect(() => {
+		document.title = "Pardox | User";
+	}, []);
+
 	const ProfilePostData: Array<ProfilePostBoxProps> = [
 		{
 			media: bg,
@@ -54,6 +60,7 @@ export const ProfilePage: React.FC = () => {
 				</section>
 				<section className="ProfilePage_content_right">
 					<ProfileStateBox />
+					<ProfileConnect />
 				</section>
 			</section>
 		</section>

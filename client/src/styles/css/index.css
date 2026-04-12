@@ -1764,9 +1764,18 @@ body {
   gap: 20px;
 }
 .ProfilePage .ProfilePage_content .ProfilePage_content_right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 24px;
   width: 33%;
 }
-.ProfilePage .ProfilePage_content .ProfilePage_content_right .ProfileStateBox {
+
+.ProfileStateBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1781,7 +1790,7 @@ body {
   border-radius: 12px;
   width: 100%;
 }
-.ProfilePage .ProfilePage_content .ProfilePage_content_right .ProfileStateBox button {
+.ProfileStateBox button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1806,7 +1815,7 @@ body {
   font-size: 18px;
   font-weight: bold;
 }
-.ProfilePage .ProfilePage_content .ProfilePage_content_right .ProfileStateBox .ProfileStateBox_header {
+.ProfileStateBox .ProfileStateBox_header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1821,10 +1830,10 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-.ProfilePage .ProfilePage_content .ProfilePage_content_right .ProfileStateBox .ProfileStateBox_header h2 {
+.ProfileStateBox .ProfileStateBox_header h2 {
   color: white;
 }
-.ProfilePage .ProfilePage_content .ProfilePage_content_right .ProfileStateBox .ProfileStateBox_content {
+.ProfileStateBox .ProfileStateBox_content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1835,7 +1844,7 @@ body {
   gap: 16px;
   width: 100%;
 }
-.ProfilePage .ProfilePage_content .ProfilePage_content_right .ProfileStateBox .ProfileStateBox_content .ProfileStateBox_content_box {
+.ProfileStateBox .ProfileStateBox_content .ProfileStateBox_content_box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1850,7 +1859,7 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-.ProfilePage .ProfilePage_content .ProfilePage_content_right .ProfileStateBox .ProfileStateBox_content .ProfileStateBox_content_box h4 {
+.ProfileStateBox .ProfileStateBox_content .ProfileStateBox_content_box h4 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1868,7 +1877,7 @@ body {
   font-weight: 400;
   color: #ad92c9;
 }
-.ProfilePage .ProfilePage_content .ProfilePage_content_right .ProfileStateBox .ProfileStateBox_content .ProfileStateBox_content_box span {
+.ProfileStateBox .ProfileStateBox_content .ProfileStateBox_content_box span {
   font-size: 18px;
   font-weight: bold;
   color: white;
@@ -2139,6 +2148,70 @@ body {
   background-color: #7f13ec;
   position: absolute;
   top: 96%;
+}
+
+.ProfileConnect {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  background-color: #261b2e;
+  border: 1px solid #4d3267;
+  border-radius: 12px;
+}
+.ProfileConnect > h2 {
+  font-size: 24px;
+  color: white;
+}
+.ProfileConnect .ProfileConnect_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 12px;
+}
+
+.ProfileConnectBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 16px;
+  padding: 8px 12px;
+  background-color: rgba(25, 16, 34, 0.5);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.ProfileConnectBox .ProfileConnectBox_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.ProfileConnectBox .ProfileConnectBox_content h2 {
+  color: white;
+  font-weight: 500;
+}
+.ProfileConnectBox .ProfileConnectBox_content span {
+  font-size: 10px;
+  color: #ad92c9;
 }
 
 .VerifyPage {
