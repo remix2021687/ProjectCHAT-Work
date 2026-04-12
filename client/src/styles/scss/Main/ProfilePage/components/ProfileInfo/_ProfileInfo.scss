@@ -1,0 +1,22 @@
+.ProfileInfo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+	width: 100%;
+
+	.ProfileInfo_content {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		width: 80%;
+
+		.ProfileInfo_content_left {
+			width: 60%;
+		}
+	}
+}
+
+@import "./components/ProfileInfoHeader";
+@import "./components/ProfileInfoNav/ProfileInfoNav";

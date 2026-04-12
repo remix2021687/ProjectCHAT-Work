@@ -1,0 +1,27 @@
+.ProfilePostBox {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	cursor: pointer;
+
+	img {
+		border: 1px solid #4d3267;
+		border-radius: 12px;
+		object-fit: cover;
+	}
+
+	.ProfilePostBox_content {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+
+		h2 {
+			color: white;
+		}
+
+		span {
+			font-size: 14px;
+			color: #ad92c9;
+		}
+	}
+}

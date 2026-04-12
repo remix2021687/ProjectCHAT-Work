@@ -1,0 +1,40 @@
+.ProfilePage {
+	display: flex;
+	flex-direction: column;
+	background-color: #261b2e;
+	padding-bottom: 80px;
+	width: 100%;
+
+	.ProfilePage_header {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+
+	.ProfilePage_content {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		padding: 24px 80px 0 180px;
+
+		.ProfilePage_content_left {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			width: fit-content;
+			gap: 20px;
+		}
+
+		.ProfilePage_content_right {
+			display: flex;
+			flex-direction: column;
+			gap: 24px;
+			width: 33%;
+		}
+	}
+}
+
+@import "./components/ProfileStateBox/ProfileStateBox";
+@import "./components/ProfilePonorama/ProfilePonorama";
+@import "./components/ProfileInfo/ProfileInfo";
+@import "./components/ProfileConnect/ProfileConnect";

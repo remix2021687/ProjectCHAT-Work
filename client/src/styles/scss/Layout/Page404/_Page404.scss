@@ -1,0 +1,127 @@
+.Page404 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 50px 0;
+	background-color: #261933;
+
+	.Page404_Logo {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+		width: 100%;
+
+		img {
+			width: 5%;
+			object-fit: cover;
+		}
+
+		h1 {
+			font-size: 50px;
+			color: white;
+		}
+	}
+
+	.Page404_header {
+		display: flex;
+		flex-direction: column;
+		gap: 180px;
+
+		& > h1 {
+			text-align: center;
+			font-size: 224px;
+			color: white;
+			letter-spacing: -30px;
+
+			#num_0 {
+				color: #7f13ec;
+				text-shadow: 4px 4px 100px rgba(127, 19, 236, 1);
+			}
+		}
+
+		.Page404_header_content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+
+			.Page404_header_content_box_1,
+			.Page404_header_content_box_2,
+			.Page404_header_content_box_3 {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				position: absolute;
+				width: 288px;
+				height: 288px;
+				border-radius: 32px;
+			}
+
+			.Page404_header_content_box_1 {
+				z-index: 1;
+				background-color: #322244;
+				border: 1px solid rgba($color: #4d3267, $alpha: 0.3);
+				transform: rotateZ(45deg);
+			}
+
+			.Page404_header_content_box_2 {
+				z-index: 2;
+				background-color: #261933;
+				border: 1px solid rgba($color: #4d3267, $alpha: 0.3);
+				transform: rotateZ(-15deg);
+			}
+
+			.Page404_header_content_box_3 {
+				z-index: 3;
+
+				h3 {
+					font-size: 20px;
+					font-weight: bold;
+					color: #ad92c9;
+				}
+			}
+		}
+	}
+
+	.Page404_footer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 48px;
+		width: 100%;
+		margin-top: 50px;
+
+		a {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			font-size: 16px;
+			font-weight: bold;
+			color: #ffffff;
+			gap: 3px;
+			width: 80%;
+			height: 82px;
+			background-color: #7f13ec;
+			border-radius: 12px;
+			box-shadow: 0px 10px 15px -3px rgba($color: #7f13ec, $alpha: 0.3);
+		}
+
+		.Page404_footer_info {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			gap: 18px;
+			width: 100%;
+		}
+	}
+}
+
+@import "./components/Page404InfoBox/Page404InfoBox";

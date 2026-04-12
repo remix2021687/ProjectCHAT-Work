@@ -1,0 +1,33 @@
+.Page404InfoBox {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 18px;
+	width: 100%;
+	height: 162px;
+	padding: 20px;
+	background-color: #1e132b;
+	border-radius: 12px;
+	text-align: center;
+	border: 1px solid rgba($color: #4d3267, $alpha: 0.1);
+
+	.Page404InfoBox_content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+
+		h2 {
+			font-size: 16px;
+			color: white;
+		}
+
+		p {
+			font-size: 14px;
+			color: #ad92c9;
+			max-width: 80%;
+		}
+	}
+}

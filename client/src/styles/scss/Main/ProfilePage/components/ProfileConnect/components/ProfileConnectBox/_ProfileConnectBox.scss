@@ -1,0 +1,25 @@
+.ProfileConnectBox {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 16px;
+	padding: 8px 12px;
+	background-color: rgba($color: #191022, $alpha: 0.5);
+	border-radius: 8px;
+	cursor: pointer;
+
+	.ProfileConnectBox_content {
+		display: flex;
+		flex-direction: column;
+
+		h2 {
+			color: white;
+			font-weight: 500;
+		}
+
+		span {
+			font-size: 10px;
+			color: #ad92c9;
+		}
+	}
+}
