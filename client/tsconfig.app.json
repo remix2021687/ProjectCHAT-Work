@@ -12,7 +12,8 @@
 		"paths": {
 			"@/*": ["src/*"],
 			"@assets/*": ["src/assets/*"],
-			"@store/*": ["src/store/*"]
+			"@store/*": ["src/store/*"],
+			"@feacher/*": ["src/feacher/*"]
 		},
 
 		/* Bundler mode */
